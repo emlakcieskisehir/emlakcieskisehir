@@ -1,0 +1,63 @@
+---
+import Ana from '../../layouts/Ana.astro';
+import IlanKart from '../../components/IlanKart.astro';
+import ayarlar from '../../data/ayarlar.json';
+import { aktifIlanlar } from '../../lib/icerik';
+
+const ilanlar = await aktifIlanlar();
+const benzersiz = (k: string) => [...new Set(ilanlar.map((i: any) => i.data[k]).filter(Boolean))].sort((a, b) => String(a).localeCompare(String(b), 'tr'));
+const tipler = benzersiz('tip');
+const ilceler = benzersiz('ilce');
+const odalar = benzersiz('oda');
+---
+<Ana baslik={`${ayarlar.sehir} satılık ve kiralık ilanlar`} aciklama={`${ayarlar.danisman_adi} güncel ilanları: ${ayarlar.sehir} ${ayarlar.hizmet_bolgeleri} bölgesinde satılık ve kiralık daire, villa, arsa, dükkan ve ofis ilanları.`}>
+  <section class="sayfa-bas">
+    <div class="wrap">
+      <div class="yol"><a href="/">Ana sayfa</a> / İlanlar</div>
+      <h1>{ayarlar.sehir} satılık ve kiralık ilanlar</h1>
+      <p>Aradığınızı burada bulamazsanız arayın; yeni gelen ve henüz ilana çıkmamış evleri de söylerim.</p>
+    </div>
+  </section>
+  <section style="padding-bottom:110px">
+    <div class="wrap">
+      <form class="filtre" id="filtre">
+        <div><label for="d">Durum</label><select id="d" name="durum"><option value="">Tümü</option><option>Satılık</option><option>Kiralık</option></select></div>
+        <div><label for="t">Tip</label><select id="t" name="tip"><option value="">Tümü</option>{tipler.map((x) => <option>{x}</option>)}</select></div>
+        <div><label for="i">İlçe</label><select id="i" name="ilce"><option value="">Tümü</option>{ilceler.map((x) => <option>{x}</option>)}</select></div>
+        <div><label for="o">Oda</label><select id="o" name="oda"><option value="">Tümü</option>{odalar.map((x) => <option>{x}</option>)}</select></div>
+        <div><label for="f">En fazla fiyat, ₺</label><input id="f" name="fiyat" inputmode="numeric" placeholder="Örn: 5000000" /></div>
+        <button type="reset" class="btn btn--cizgi">Filtreleri temizle</button>
+      </form>
+      <p class="sonuc-sayi" id="sayi">{ilanlar.length} ilan listeleniyor</p>
+      <div class="ilanlar" id="liste">
+        {ilanlar.map((ilan) => <IlanKart ilan={ilan} />)}
+      </div>
+      <p class="bos" id="bos" hidden>Bu filtrelerle eşleşen ilan yok. Filtreleri gevşetin ya da <a href="/iletisim/">ne aradığınızı bana yazın</a>.</p>
+      {ayarlar.sahibinden_magaza && <p style="margin-top:36px"><a href={ayarlar.sahibinden_magaza} target="_blank" rel="noopener">Sahibinden mağazamdaki diğer ilanlar</a></p>}
+    </div>
+  </section>
+</Ana>
+
+<script>
+  const form = document.getElementById('filtre') as HTMLFormElement;
+  const kartlar = [...document.querySelectorAll<HTMLElement>('#liste .ilan')];
+  const sayi = document.getElementById('sayi')!;
+  const bos = document.getElementById('bos')!;
+  const p = new URLSearchParams(location.search);
+  for (const [k, v] of p) { const el = form.elements.namedItem(k) as HTMLInputElement | null; if (el) el.value = v; }
+  function uygula() {
+    const f = Object.fromEntries(new FormData(form)) as Record<string, string>;
+    const maks = Number(String(f.fiyat || '').replace(/\D/g, '')) || Infinity;
+    let n = 0;
+    kartlar.forEach((k) => {
+      const d = k.dataset;
+      const ok = (!f.durum || d.durum === f.durum) && (!f.tip || d.tip === f.tip) && (!f.ilce || d.ilce === f.ilce) && (!f.oda || d.oda === f.oda) && (Number(d.fiyat) <= maks);
+      k.hidden = !ok; if (ok) n++;
+    });
+    sayi.textContent = `${n} ilan listeleniyor`;
+    bos.hidden = n > 0;
+  }
+  form.addEventListener('input', uygula);
+  form.addEventListener('reset', () => setTimeout(uygula));
+  uygula();
+</script>

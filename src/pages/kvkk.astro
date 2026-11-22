@@ -1,0 +1,25 @@
+---
+import Ana from '../layouts/Ana.astro';
+import ayarlar from '../data/ayarlar.json';
+---
+<Ana baslik="KVKK aydınlatma metni" aciklama={`${ayarlar.ofis_adi} kişisel verilerin korunması aydınlatma metni.`}>
+  <article class="makale">
+    <div class="yol"><a href="/">Ana sayfa</a> / KVKK aydınlatma metni</div>
+    <h1>Kişisel verilerin korunması hakkında aydınlatma metni</h1>
+    <div class="metin">
+      <p><em>Bu metin genel bir taslaktır. Yayına almadan önce bir hukukçuya kontrol ettirmeniz önerilir.</em></p>
+      <h2>Veri sorumlusu</h2>
+      <p>6698 sayılı Kişisel Verilerin Korunması Kanunu kapsamında veri sorumlusu {ayarlar.ofis_adi} ({ayarlar.danisman_adi}), {ayarlar.adres} adresinde faaliyet göstermektedir.</p>
+      <h2>Hangi verileri işliyoruz</h2>
+      <p>Web sitemizdeki formlar aracılığıyla ad soyad, telefon numarası, mülkünüzün bulunduğu ilçe ve mahalle ile not alanına yazdığınız bilgiler.</p>
+      <h2>Hangi amaçla işliyoruz</h2>
+      <p>Değerleme, satış, kiralama veya mülk arama talebinize dönüş yapmak ve sizinle iletişim kurmak amacıyla, açık rızanıza dayanarak.</p>
+      <h2>Verileri kimlerle paylaşıyoruz</h2>
+      <p>Form bilgileri, e-posta ile iletilmesi için form hizmeti sağlayıcısı (Web3Forms) üzerinden aktarılır. Bilgileriniz pazarlama amacıyla üçüncü kişilerle paylaşılmaz.</p>
+      <h2>Çerezler</h2>
+      <p>Sitemiz reklam veya takip amaçlı çerez kullanmaz. Ziyaret istatistikleri çerezsiz bir analiz aracıyla tutulur. Harita bölümünde Google Haritalar gösterilir ve Google kendi çerezlerini kullanabilir.</p>
+      <h2>Haklarınız</h2>
+      <p>KVKK'nın 11. maddesi uyarınca verilerinizin işlenip işlenmediğini öğrenme, düzeltilmesini veya silinmesini isteme haklarına sahipsiniz. Talepleriniz için <a href={`mailto:${ayarlar.eposta}`}>{ayarlar.eposta}</a> adresine yazabilirsiniz.</p>
+    </div>
+  </article>
+</Ana>

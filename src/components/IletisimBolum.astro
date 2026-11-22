@@ -1,0 +1,28 @@
+---
+import ayarlar from '../data/ayarlar.json';
+import Ikon from './Ikon.astro';
+import { telLink, waLink } from '../lib/yardimci';
+interface Props { baslikSeviye?: 'h1' | 'h2'; }
+const { baslikSeviye = 'h2' } = Astro.props;
+const Baslik = baslikSeviye;
+const harita = `https://maps.google.com/maps?q=${encodeURIComponent(ayarlar.adres)}&z=15&output=embed`;
+---
+<div class="iletisim">
+  <div>
+    <Baslik>Ofise uğrayın ya da arayın</Baslik>
+    <p class="soluk">Randevusuz da gelebilirsiniz, ama sahada olabileceğim için önceden aramanızı öneririm.</p>
+    <dl>
+      <div><dt>Telefon</dt><dd><a href={telLink(ayarlar.telefon)}>{ayarlar.telefon}</a></dd></div>
+      <div><dt>E-posta</dt><dd><a href={`mailto:${ayarlar.eposta}`}>{ayarlar.eposta}</a></dd></div>
+      <div><dt>Adres</dt><dd>{ayarlar.adres}</dd></div>
+      <div><dt>Çalışma saatleri</dt><dd>{ayarlar.calisma_saatleri}</dd></div>
+    </dl>
+    <div class="butonlar">
+      <a class="btn btn--wa" href={waLink(ayarlar.whatsapp, 'Merhaba Ertuğrul Bey, web sitenizden ulaşıyorum.')} target="_blank" rel="noopener"><Ikon ad="whatsapp" />WhatsApp'tan yaz</a>
+      <a class="btn btn--cizgi" href={telLink(ayarlar.telefon)}><Ikon ad="telefon" />Ara</a>
+    </div>
+  </div>
+  <div class="harita">
+    <iframe src={harita} title="Ofisin haritadaki konumu" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+  </div>
+</div>

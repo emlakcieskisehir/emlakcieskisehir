@@ -1,0 +1,259 @@
+# Pages CMS yönetim paneli ayarları (https://app.pagescms.org)
+# Bu dosya panelde hangi bölümlerin ve alanların görüneceğini belirler.
+
+media:
+  input: public/uploads
+  output: /uploads
+
+content:
+  - name: ilanlar
+    label: İlanlar
+    type: collection
+    path: src/content/ilanlar
+    filename: "{primary}.md"
+    view:
+      fields: [baslik, durum, fiyat, ilce, aktif]
+      primary: baslik
+      sort: [tarih, fiyat]
+      default:
+        sort: tarih
+        order: desc
+    fields:
+      - name: baslik
+        label: İlan başlığı
+        description: "Örnek: Batıkent'te satılık 3+1 daire"
+        type: string
+        required: true
+      - name: durum
+        label: Satılık mı, kiralık mı?
+        type: select
+        default: Satılık
+        options:
+          values: [Satılık, Kiralık]
+      - name: tip
+        label: Mülk tipi
+        type: select
+        default: Daire
+        options:
+          values: [Daire, Villa, Müstakil Ev, Arsa, Tarla, Dükkan, Ofis, Depo, Bina]
+      - name: fiyat
+        label: Fiyat (₺)
+        description: "Sadece rakam yazın, nokta koymayın. Kiralıkta aylık kira. Boş bırakırsanız 'Fiyat için arayın' yazar."
+        type: number
+      - name: ilce
+        label: İlçe
+        type: select
+        default: Tepebaşı
+        options:
+          values: [Tepebaşı, Odunpazarı, Alpu, Beylikova, Çifteler, Günyüzü, Han, İnönü, Mahmudiye, Mihalgazi, Mihalıççık, Sarıcakaya, Seyitgazi, Sivrihisar]
+      - name: mahalle
+        label: Mahalle
+        type: string
+      - name: oda
+        label: Oda sayısı
+        description: "Örnek: 3+1"
+        type: string
+      - name: m2_brut
+        label: Brüt m²
+        type: number
+      - name: m2_net
+        label: Net m²
+        type: number
+      - name: kat
+        label: Kat
+        description: "Örnek: 3. Kat, Zemin, Bahçe katı"
+        type: string
+      - name: bina_yasi
+        label: Bina yaşı
+        type: string
+      - name: isitma
+        label: Isıtma
+        type: string
+      - name: ozellikler
+        label: Öne çıkan özellikler
+        description: "Asansör, otopark, balkon gibi. Her birini ayrı satır olarak ekleyin."
+        type: string
+        list: true
+      - name: kapak
+        label: Kapak fotoğrafı
+        description: Listede görünen ana fotoğraf. Yatay çekilmiş olsun.
+        type: image
+        options:
+          rename: true
+      - name: galeri
+        label: Diğer fotoğraflar
+        type: image
+        options:
+          rename: true
+          multiple:
+            max: 30
+      - name: sahibinden
+        label: Sahibinden ilan linki (isteğe bağlı)
+        type: string
+      - name: one_cikan
+        label: Ana sayfada göster
+        type: boolean
+        default: true
+      - name: aktif
+        label: Yayında
+        description: Satılan veya kiralanan ilanları silmek yerine bunu kapatabilirsiniz.
+        type: boolean
+        default: true
+      - name: tarih
+        label: İlan tarihi
+        type: date
+      - name: body
+        label: Açıklama
+        type: rich-text
+        options:
+          format: markdown
+
+  - name: rehberler
+    label: Rehber yazıları
+    type: collection
+    path: src/content/rehberler
+    filename: "{primary}.md"
+    view:
+      fields: [baslik, kategori, tarih]
+      primary: baslik
+      default:
+        sort: tarih
+        order: desc
+    fields:
+      - name: baslik
+        label: Başlık
+        type: string
+        required: true
+      - name: ozet
+        label: Kısa özet
+        description: Listede ve Google'da görünen 1-2 cümle.
+        type: text
+        required: true
+      - name: kategori
+        label: Kategori
+        type: select
+        default: Bilgi Merkezi
+        options:
+          values: [Bölge Rehberi, Bilgi Merkezi]
+      - name: kapak
+        label: Kapak fotoğrafı
+        type: image
+        options:
+          rename: true
+      - name: tarih
+        label: Tarih
+        type: date
+      - name: body
+        label: Yazı
+        type: rich-text
+        options:
+          format: markdown
+
+  - name: ayarlar
+    label: Site ayarları
+    type: file
+    path: src/data/ayarlar.json
+    format: json
+    fields:
+      - { name: ofis_adi, label: Ofis adı, type: string }
+      - { name: danisman_adi, label: Ad soyad, type: string }
+      - { name: unvan, label: Unvan, type: string }
+      - { name: sehir, label: Şehir, type: string }
+      - { name: hizmet_bolgeleri, label: Hizmet verilen ilçeler (virgülle ayırın), type: string }
+      - { name: telefon, label: Telefon, type: string }
+      - { name: whatsapp, label: WhatsApp numarası, type: string }
+      - { name: eposta, label: E-posta, type: string }
+      - { name: adres, label: Ofis adresi, type: text }
+      - { name: calisma_saatleri, label: Çalışma saatleri, type: string }
+      - { name: yetki_belge_no, label: Taşınmaz ticareti yetki belgesi no, type: string }
+      - { name: instagram, label: Instagram linki, type: string }
+      - { name: facebook, label: Facebook linki, type: string }
+      - { name: youtube, label: YouTube linki, type: string }
+      - { name: linkedin, label: LinkedIn linki, type: string }
+      - { name: sahibinden_magaza, label: Sahibinden mağaza linki, type: string }
+      - { name: google_yorum_linki, label: Google yorumları linki, type: string }
+      - { name: form_anahtari, label: Form anahtarı (Web3Forms), type: string }
+      - { name: logo, label: Logo (boş bırakılırsa baş harfler kullanılır), type: image }
+      - { name: vurgu_rengi, label: Vurgu rengi (tabela kırmızısı), type: string }
+      - { name: seo_aciklama, label: Google açıklaması (ana sayfa), type: text }
+      - { name: domain, label: Alan adı, type: string }
+
+  - name: anasayfa
+    label: Ana sayfa metinleri
+    type: file
+    path: src/data/anasayfa.json
+    format: json
+    fields:
+      - { name: hero_baslik, label: Büyük başlık (kısa tutun, örn. Merhaba), type: string }
+      - { name: hero_metin, label: Başlık altı metin, type: text }
+      - name: rakamlar
+        label: Giriş bölümündeki rakamlar
+        type: object
+        list: true
+        fields:
+          - { name: deger, label: Rakam (sadece sayı), type: string }
+          - { name: etiket, label: Açıklama, type: string }
+      - name: istatistik
+        label: Hakkımda kartındaki bilgi
+        type: object
+        fields:
+          - { name: deger, label: Değer, type: string }
+          - { name: aciklama, label: Açıklama, type: string }
+      - { name: hakkinda_baslik, label: Hakkımda bölüm başlığı, type: string }
+      - name: hizmetler
+        label: Neler yapıyorum
+        type: object
+        list: true
+        fields:
+          - { name: baslik, label: Başlık, type: string }
+          - { name: kimin_icin, label: Kimin için, type: string }
+          - { name: metin, label: Açıklama, type: text }
+          - { name: etiketler, label: Etiketler, type: string, list: true }
+      - name: surec
+        label: Satış süreci adımları
+        type: object
+        list: true
+        fields:
+          - { name: baslik, label: Adım, type: string }
+          - { name: metin, label: Açıklama, type: text }
+      - name: mahalleler
+        label: Çalışılan mahalleler
+        type: object
+        list: true
+        fields:
+          - { name: ilce, label: İlçe, type: string }
+          - { name: liste, label: Mahalleler (virgülle ayırın), type: text }
+      - name: sss
+        label: Sık sorulan sorular
+        type: object
+        list: true
+        fields:
+          - { name: soru, label: Soru, type: string }
+          - { name: cevap, label: Cevap, type: text }
+
+  - name: hakkimda
+    label: Hakkımda
+    type: file
+    path: src/data/hakkimda.json
+    format: json
+    fields:
+      - { name: baslik, label: Başlık, type: string }
+      - { name: foto, label: Fotoğraf, type: image }
+      - { name: kisa_metin, label: Ana sayfadaki kısa tanıtım, type: text }
+      - { name: metin, label: Hakkımda sayfası metni (paragraflar arasında boş satır bırakın), type: text }
+      - { name: belgeler, label: Belgeler ve eğitimler, type: string, list: true }
+
+  - name: yorumlar
+    label: Müşteri yorumları
+    type: file
+    path: src/data/yorumlar.json
+    format: json
+    fields:
+      - name: yorumlar
+        label: Yorumlar
+        type: object
+        list: true
+        fields:
+          - { name: isim, label: Müşteri adı, type: string }
+          - { name: metin, label: Yorum, type: text }
+          - { name: puan, label: Puan (1-5), type: number }

@@ -1,0 +1,13 @@
+---
+import Ana from '../layouts/Ana.astro';
+import IletisimBolum from '../components/IletisimBolum.astro';
+import ayarlar from '../data/ayarlar.json';
+---
+<Ana baslik={`İletişim: ${ayarlar.danisman_adi}, ${ayarlar.sehir}`} aciklama={`${ayarlar.ofis_adi} iletişim: ${ayarlar.telefon}, ${ayarlar.adres}. ${ayarlar.calisma_saatleri}.`}>
+  <section class="blok">
+    <div class="wrap">
+      <div class="yol"><a href="/">Ana sayfa</a> / İletişim</div>
+      <IletisimBolum baslikSeviye="h1" />
+    </div>
+  </section>
+</Ana>

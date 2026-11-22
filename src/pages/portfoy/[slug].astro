@@ -1,0 +1,115 @@
+---
+import Ana from '../../layouts/Ana.astro';
+import IlanKart from '../../components/IlanKart.astro';
+import Ikon from '../../components/Ikon.astro';
+import ayarlar from '../../data/ayarlar.json';
+import { render } from 'astro:content';
+import { aktifIlanlar } from '../../lib/icerik';
+import { fiyatYaz, telLink, waLink, tarihYaz } from '../../lib/yardimci';
+
+export async function getStaticPaths() {
+  const ilanlar = await aktifIlanlar();
+  return ilanlar.map((ilan) => ({ params: { slug: ilan.slug }, props: { ilan, hepsi: ilanlar } }));
+}
+const { ilan, hepsi } = Astro.props;
+const d = ilan.data;
+const { Content } = await render(ilan);
+const fotolar = [d.kapak, ...d.galeri].filter(Boolean) as string[];
+const url = new URL(Astro.url.pathname, Astro.site).href;
+const konum = [d.mahalle, d.ilce, ayarlar.sehir].filter(Boolean).join(', ');
+const satirlar = [
+  ['Durum', d.durum], ['Tip', d.tip], ['Oda', d.oda], ['Brüt m²', d.m2_brut && `${d.m2_brut} m²`], ['Net m²', d.m2_net && `${d.m2_net} m²`],
+  ['Kat', d.kat], ['Bina yaşı', d.bina_yasi], ['Isıtma', d.isitma], ['İlan tarihi', tarihYaz(d.tarih)],
+].filter(([, v]) => v);
+const benzer = hepsi.filter((i: any) => i.id !== ilan.id && (i.data.ilce === d.ilce || i.data.tip === d.tip)).slice(0, 3);
+const baslikTemiz = d.baslik.replace(/^\(Örnek\)\s*/, '');
+const [tutar, ek] = fiyatYaz(d.fiyat, d.durum).split(' / ');
+const waMesaj = `Merhaba, "${d.baslik}" ilanı hakkında bilgi almak istiyorum: ${url}`;
+const aciklama = `${d.durum} ${d.tip.toLowerCase()} – ${konum}. ${[d.oda, d.m2_brut && d.m2_brut + ' m²', d.kat].filter(Boolean).join(', ')}. Fiyat: ${fiyatYaz(d.fiyat, d.durum)}.`;
+const sema = {
+  '@context': 'https://schema.org',
+  '@type': 'RealEstateListing',
+  name: d.baslik,
+  url,
+  datePosted: d.tarih.toISOString().slice(0, 10),
+  image: fotolar.map((f) => new URL(f, Astro.site).href),
+  offers: d.fiyat ? { '@type': 'Offer', price: d.fiyat, priceCurrency: 'TRY', businessFunction: d.durum === 'Kiralık' ? 'http://purl.org/goodrelations/v1#LeaseOut' : 'http://purl.org/goodrelations/v1#Sell' } : undefined,
+  address: { '@type': 'PostalAddress', addressLocality: d.ilce, addressRegion: ayarlar.sehir, addressCountry: 'TR' },
+};
+---
+<Ana baslik={baslikTemiz} aciklama={aciklama} gorsel={fotolar[0]} schema={sema}>
+  <div class="wrap">
+    <div class="yol" style="margin-top:26px"><a href="/">Ana sayfa</a> / <a href="/portfoy/">İlanlar</a> / {d.ilce}</div>
+    <div class="detay">
+      <div>
+        <div class="galeri" id="galeri">
+          <img src={fotolar[0]} alt={baslikTemiz} id="ana-foto" width="1200" height="800" />
+          {fotolar.length > 1 && (
+            <>
+              <button class="galeri-ok geri" data-yon="-1" aria-label="Önceki fotoğraf"><Ikon ad="ok" /></button>
+              <button class="galeri-ok ileri" data-yon="1" aria-label="Sonraki fotoğraf"><Ikon ad="ok" /></button>
+              <span class="galeri-sayac" id="sayac">1 / {fotolar.length}</span>
+            </>
+          )}
+        </div>
+        {fotolar.length > 1 && (
+          <div class="kucukler" id="kucukler">
+            {fotolar.map((f, i) => <button aria-label={`${i + 1}. fotoğrafı göster`} aria-current={i === 0 ? 'true' : 'false'} data-i={i}><img src={f} alt="" loading="lazy" /></button>)}
+          </div>
+        )}
+        <div style="margin-top:34px">
+          <h1 style="font-size:clamp(1.7rem,3vw,2.3rem)">{d.baslik}</h1>
+          <p class="soluk" style="margin:0">{konum}</p>
+          {d.ozellikler.length > 0 && <ul class="ozellikler">{d.ozellikler.map((o) => <li>{o}</li>)}</ul>}
+          <h2 style="font-size:var(--t-xl);margin-top:36px">Açıklama</h2>
+          <div class="metin"><Content /></div>
+        </div>
+      </div>
+      <aside class="detay-yan">
+        <span class={`durum durum--duz ${d.durum === 'Kiralık' ? 'durum--kiralik' : ''}`}>{d.durum}</span>
+        <div class="detay-fiyat">{tutar}{ek && <small> / {ek}</small>}</div>
+        <table class="ozellik-tablo">
+          {satirlar.map(([k, v]) => <tr><th>{k}</th><td>{v}</td></tr>)}
+        </table>
+        <a class="btn btn--wa btn--tam" href={waLink(ayarlar.whatsapp, waMesaj)} target="_blank" rel="noopener"><Ikon ad="whatsapp" />WhatsApp'tan bu ilanı sor</a>
+        <a class="btn btn--koyu btn--tam" href={telLink(ayarlar.telefon)}><Ikon ad="telefon" />{ayarlar.telefon}</a>
+        {d.sahibinden && <a class="btn btn--cizgi btn--tam" href={d.sahibinden} target="_blank" rel="noopener">Sahibinden'deki ilanı aç</a>}
+        <button class="btn btn--cizgi btn--tam" id="paylas" data-url={url} data-baslik={baslikTemiz}><Ikon ad="paylas" />İlanı paylaş</button>
+        <p class="kucuk-not">{ayarlar.ofis_adi}, yetki belgesi no: {ayarlar.yetki_belge_no}</p>
+      </aside>
+    </div>
+  </div>
+  {benzer.length > 0 && (
+    <section class="blok blok--zemin">
+      <div class="wrap">
+        <h2 style="margin-bottom:30px">Benzer ilanlar</h2>
+        <div class="ilanlar">{benzer.map((i: any) => <IlanKart ilan={i} />)}</div>
+      </div>
+    </section>
+  )}
+</Ana>
+
+<script>
+  const ana = document.getElementById('ana-foto') as HTMLImageElement | null;
+  const kucukler = [...document.querySelectorAll<HTMLButtonElement>('#kucukler button')];
+  const sayac = document.getElementById('sayac');
+  let aktif = 0;
+  function goster(i: number) {
+    if (!ana || !kucukler.length) return;
+    aktif = (i + kucukler.length) % kucukler.length;
+    ana.src = kucukler[aktif].querySelector('img')!.src;
+    kucukler.forEach((b, j) => b.setAttribute('aria-current', String(j === aktif)));
+    if (sayac) sayac.textContent = `${aktif + 1} / ${kucukler.length}`;
+  }
+  kucukler.forEach((b) => b.addEventListener('click', () => goster(Number(b.dataset.i))));
+  document.querySelectorAll<HTMLButtonElement>('.galeri-ok').forEach((b) => b.addEventListener('click', () => goster(aktif + Number(b.dataset.yon))));
+  let x0 = 0;
+  document.getElementById('galeri')?.addEventListener('touchstart', (e) => { x0 = e.touches[0].clientX; }, { passive: true });
+  document.getElementById('galeri')?.addEventListener('touchend', (e) => { const dx = e.changedTouches[0].clientX - x0; if (Math.abs(dx) > 40) goster(aktif + (dx < 0 ? 1 : -1)); });
+  document.getElementById('paylas')?.addEventListener('click', async (e) => {
+    const b = e.currentTarget as HTMLButtonElement;
+    const { url, baslik } = b.dataset;
+    if (navigator.share) { try { await navigator.share({ title: baslik, url }); } catch {} }
+    else { await navigator.clipboard.writeText(url!); b.textContent = 'Link kopyalandı'; }
+  });
+</script>

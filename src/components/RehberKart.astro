@@ -1,0 +1,11 @@
+---
+import { tarihYaz } from '../lib/yardimci';
+interface Props { rehber: any; }
+const { rehber } = Astro.props;
+const d = rehber.data;
+---
+<a class="rehber-kart" href={`/rehberler/${rehber.slug}/`}>
+  {d.kapak && <img src={d.kapak} alt="" loading="lazy" width="400" height="300" />}
+  <div class="meta"><span class="rozet">{d.kategori}</span><span>{tarihYaz(d.tarih)}</span></div>
+  <h3>{d.baslik}</h3>
+</a>

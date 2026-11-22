@@ -1,0 +1,25 @@
+---
+import Ana from '../../layouts/Ana.astro';
+import RehberKart from '../../components/RehberKart.astro';
+import ayarlar from '../../data/ayarlar.json';
+import { rehberListesi } from '../../lib/icerik';
+const rehberler = await rehberListesi();
+const bolge = rehberler.filter((r) => r.data.kategori === 'Bölge Rehberi');
+const bilgi = rehberler.filter((r) => r.data.kategori !== 'Bölge Rehberi');
+---
+<Ana baslik={`${ayarlar.sehir} mahalle rehberleri ve ev alım satım bilgileri`} aciklama={`${ayarlar.sehir} mahalleleri hakkında rehberler; tapu masrafları, kiracılı ev satışı, konut kredisi gibi konularda sade anlatımlar.`}>
+  <section class="sayfa-bas">
+    <div class="wrap">
+      <div class="yol"><a href="/">Ana sayfa</a> / Rehberler</div>
+      <h1>Rehberler</h1>
+      <p>Müşterilerimin en çok sorduğu konuları burada yazıyorum.</p>
+    </div>
+  </section>
+  <section class="blok blok--zemin" style="padding-top:70px">
+    <div class="wrap">
+      {bolge.length > 0 && (<><h2 style="font-size:var(--t-xl);margin-bottom:24px">Mahalle rehberleri</h2><div class="rehber-grid" style="margin-bottom:64px">{bolge.map((r) => <RehberKart rehber={r} />)}</div></>)}
+      {bilgi.length > 0 && (<><h2 style="font-size:var(--t-xl);margin-bottom:24px">Alım satım bilgileri</h2><div class="rehber-grid">{bilgi.map((r) => <RehberKart rehber={r} />)}</div></>)}
+      {rehberler.length === 0 && <p class="bos">Henüz yazı yok.</p>}
+    </div>
+  </section>
+</Ana>

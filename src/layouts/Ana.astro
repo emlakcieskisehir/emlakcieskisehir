@@ -1,0 +1,134 @@
+---
+import '../styles/global.css';
+import ayarlar from '../data/ayarlar.json';
+import Ikon from '../components/Ikon.astro';
+import { telLink, waLink } from '../lib/yardimci';
+
+interface Props {
+  baslik: string;
+  aciklama?: string;
+  gorsel?: string;
+  schema?: Record<string, unknown> | Record<string, unknown>[];
+  noindex?: boolean;
+}
+const { baslik, aciklama = ayarlar.seo_aciklama, gorsel, schema, noindex = false } = Astro.props;
+const site = Astro.site!;
+const kanonik = new URL(Astro.url.pathname, site).href;
+const ogGorsel = new URL(gorsel || '/uploads/hero.svg', site).href;
+const tamBaslik = baslik.includes(ayarlar.ofis_adi) ? baslik : `${baslik} | ${ayarlar.ofis_adi}`;
+const yol = Astro.url.pathname;
+
+const menu = [
+  { ad: 'İlanlar', link: '/portfoy/' },
+  { ad: 'Evimi satmak istiyorum', link: '/satmak-istiyorum/' },
+  { ad: 'Rehberler', link: '/rehberler/' },
+  { ad: 'Hakkımda', link: '/hakkimda/' },
+  { ad: 'İletişim', link: '/iletisim/' },
+];
+
+const ajans = {
+  '@context': 'https://schema.org',
+  '@type': 'RealEstateAgent',
+  '@id': new URL('/#ofis', site).href,
+  name: ayarlar.ofis_adi,
+  url: site.href,
+  image: ogGorsel,
+  telephone: ayarlar.telefon,
+  email: ayarlar.eposta,
+  address: { '@type': 'PostalAddress', streetAddress: ayarlar.adres, addressLocality: ayarlar.sehir, addressCountry: 'TR' },
+  areaServed: ayarlar.hizmet_bolgeleri.split(',').map((b: string) => b.trim()).filter(Boolean),
+  sameAs: [ayarlar.instagram, ayarlar.facebook, ayarlar.youtube, ayarlar.linkedin, ayarlar.sahibinden_magaza].filter(Boolean),
+};
+const semalar = [ajans, ...(schema ? (Array.isArray(schema) ? schema : [schema]) : [])];
+const sosyal = [
+  { ad: 'instagram', link: ayarlar.instagram },
+  { ad: 'facebook', link: ayarlar.facebook },
+  { ad: 'youtube', link: ayarlar.youtube },
+  { ad: 'linkedin', link: ayarlar.linkedin },
+].filter((s) => s.link);
+const yil = new Date().getFullYear();
+const basHarf = ayarlar.danisman_adi.split(' ').map((k: string) => k.charAt(0)).join('').slice(0, 2).toLocaleUpperCase('tr-TR');
+---
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{tamBaslik}</title>
+  <meta name="description" content={aciklama} />
+  <link rel="canonical" href={kanonik} />
+  {noindex && <meta name="robots" content="noindex" />}
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="tr_TR" />
+  <meta property="og:site_name" content={ayarlar.ofis_adi} />
+  <meta property="og:title" content={tamBaslik} />
+  <meta property="og:description" content={aciklama} />
+  <meta property="og:url" content={kanonik} />
+  <meta property="og:image" content={ogGorsel} />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="theme-color" content="#ffffff" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="sitemap" href="/sitemap-index.xml" />
+  
+  {semalar.map((s) => <script type="application/ld+json" set:html={JSON.stringify(s)} />)}
+</head>
+<body>
+  <header class="header">
+    <div class="wrap">
+      <a href="/" class="logo" aria-label={`${ayarlar.ofis_adi}, ana sayfa`}>
+        {ayarlar.logo ? <img src={ayarlar.logo} alt={ayarlar.ofis_adi} /> : (
+          <><span class="logo-isaret" aria-hidden="true">{basHarf}</span><span>{ayarlar.danisman_adi}</span></>
+        )}
+      </a>
+      <nav class="nav" id="nav" aria-label="Ana menü">
+        {menu.map((m) => <a href={m.link} aria-current={yol.startsWith(m.link) ? 'page' : undefined}>{m.ad}</a>)}
+      </nav>
+      <div class="header-sag">
+        <a class="alti-cizili" href={telLink(ayarlar.telefon)}>{ayarlar.telefon}</a>
+      </div>
+      <button class="menu-btn" aria-label="Menüyü aç" aria-expanded="false" aria-controls="nav" id="menu-btn"><Ikon ad="menu" /></button>
+    </div>
+  </header>
+
+  <main>
+    <slot />
+  </main>
+
+  <footer class="footer">
+    <div class="wrap">
+      <div class="footer-ust">
+        <div>
+          <p style="margin:0 0 18px">Evinizi satmak, kiraya vermek ya da yeni bir ev bulmak için arayın.</p>
+          <nav class="footer-nav" aria-label="Alt menü">
+            <a href="/">Ana sayfa</a>
+            {menu.map((m) => <a href={m.link}>{m.ad}</a>)}
+          </nav>
+        </div>
+        <div style="text-align:right">
+          <a class="footer-buyuk" href={telLink(ayarlar.telefon)}>{ayarlar.telefon}</a>
+          <p style="margin:12px 0 0;margin-left:auto"><a href={`mailto:${ayarlar.eposta}`}>{ayarlar.eposta}</a></p>
+        </div>
+      </div>
+      <div class="footer-alt">
+        <span>© {yil} {ayarlar.ofis_adi}. {ayarlar.adres}</span>
+        <span>
+          {sosyal.map((s) => <a href={s.link} target="_blank" rel="noopener">{s.ad.charAt(0).toUpperCase() + s.ad.slice(1)}</a>)}
+          {ayarlar.yetki_belge_no && <span>Yetki belgesi no: {ayarlar.yetki_belge_no}</span>}
+          <a href="/kvkk/">KVKK</a>
+        </span>
+      </div>
+    </div>
+  </footer>
+
+  <a class="wa-sabit" href={waLink(ayarlar.whatsapp, 'Merhaba Ertuğrul Bey, web sitenizden ulaşıyorum.')} target="_blank" rel="noopener" aria-label="WhatsApp ile yazın"><Ikon ad="whatsapp" /></a>
+
+  <script>
+    const btn = document.getElementById('menu-btn');
+    const nav = document.getElementById('nav');
+    btn?.addEventListener('click', () => {
+      const acik = nav?.classList.toggle('acik');
+      btn.setAttribute('aria-expanded', String(!!acik));
+    });
+  </script>
+</body>
+</html>

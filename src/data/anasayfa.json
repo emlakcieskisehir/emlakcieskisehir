@@ -1,0 +1,113 @@
+{
+  "hero_baslik": "Merhaba",
+  "hero_metin": "Ben Ertuğrul. Eskişehir'de ev satmak, kiraya vermek ya da yeni bir ev bulmak isteyenlerle çalışıyorum.",
+  "hizmetler": [
+    {
+      "baslik": "Ev satışı",
+      "metin": "Fiyatı birlikte belirliyoruz, fotoğrafları çekip ilanı ben hazırlıyorum, gelen alıcılarla ben görüşüyorum.",
+      "kimin_icin": "Satıcılar için",
+      "etiketler": [
+        "Fiyat analizi",
+        "Fotoğraf",
+        "İlan"
+      ]
+    },
+    {
+      "baslik": "Kiralama",
+      "metin": "Kiracı adaylarıyla görüşüp referanslarını kontrol ediyorum. Sözleşme ve teslim günü yanınızdayım.",
+      "kimin_icin": "Ev sahipleri için",
+      "etiketler": [
+        "Kiracı seçimi",
+        "Sözleşme"
+      ]
+    },
+    {
+      "baslik": "Ücretsiz değerleme",
+      "metin": "Satmayı düşünmüyor olsanız da evinizin bugünkü değerini öğrenebilirsiniz.",
+      "kimin_icin": "Herkes için",
+      "etiketler": [
+        "Ücretsiz",
+        "Bölge verisi"
+      ]
+    },
+    {
+      "baslik": "Ev arayanlara",
+      "metin": "Ne aradığınızı söyleyin; portföyümde yoksa çevremdeki ilanlardan uygun olanları sizin için ayıklarım.",
+      "kimin_icin": "Alıcılar ve kiracılar için",
+      "etiketler": [
+        "Portföy",
+        "Pazarlık"
+      ]
+    },
+    {
+      "baslik": "Dükkan, ofis ve arsa",
+      "metin": "Ticari mülklerde kira getirisi ve imar durumunu baştan konuşuyoruz.",
+      "kimin_icin": "Yatırımcılar için",
+      "etiketler": [
+        "Kira getirisi",
+        "İmar"
+      ]
+    }
+  ],
+  "surec": [
+    {
+      "baslik": "Evinizi görüyorum",
+      "metin": "Ne zaman ve hangi şartlarla satmak istediğinizi konuşuyoruz."
+    },
+    {
+      "baslik": "Fiyatı belirliyoruz",
+      "metin": "Aynı sokaktaki ve mahalledeki son satışlara bakıyoruz."
+    },
+    {
+      "baslik": "İlana çıkıyoruz",
+      "metin": "Fotoğraf, ilan metni, sahibinden ve sosyal medya benden."
+    },
+    {
+      "baslik": "Tapuya kadar takip",
+      "metin": "Alıcı görüşmeleri, pazarlık, kredi ve tapu randevusu."
+    }
+  ],
+  "mahalleler": [
+    {
+      "ilce": "Tepebaşı",
+      "liste": "Batıkent, Sütlüce, Çamlıca, Hoşnudiye, Bahçelievler, Şirintepe, Uluönder, Ertuğrulgazi"
+    },
+    {
+      "ilce": "Odunpazarı",
+      "liste": "Vişnelik, Yenibağlar, Arifiye, Büyükdere, Emek, Gökmeydan, Osmangazi, Akarbaşı"
+    }
+  ],
+  "sss": [
+    {
+      "soru": "Değerleme için ücret alıyor musunuz?",
+      "cevap": "Hayır. Evinizi görüp size bir fiyat aralığı söylüyorum. Sonrasında benimle çalışmak zorunda değilsiniz."
+    },
+    {
+      "soru": "Hizmet bedeli ne kadar, ne zaman ödeniyor?",
+      "cevap": "Hizmet bedeli yasal oranlar içinde, yalnızca satış ya da kiralama gerçekleştiğinde ödenir. Oranı ilk görüşmede yazılı olarak konuşuyoruz."
+    },
+    {
+      "soru": "Evim ne kadar sürede satılır?",
+      "cevap": "Doğru fiyatlanmış bir ev, mahalleye ve piyasaya göre genellikle birkaç hafta ile birkaç ay arasında satılıyor."
+    },
+    {
+      "soru": "Eskişehir dışında yaşıyorum, satış yapabilir miyiz?",
+      "cevap": "Evet. Vekaletle süreci sizin adınıza yürütüyorum ve her adımda fotoğraf ve mesajla bilgi veriyorum."
+    }
+  ],
+  "rakamlar": [
+    {
+      "deger": "10",
+      "etiket": "yıllık deneyim"
+    },
+    {
+      "deger": "300",
+      "etiket": "satılan ve kiralanan ev"
+    }
+  ],
+  "istatistik": {
+    "deger": "6 hafta",
+    "aciklama": "Doğru fiyatlanan bir evin ortalama satış süresi"
+  },
+  "hakkinda_baslik": "Eskişehir'i sokak sokak bilen bir emlakçı"
+}

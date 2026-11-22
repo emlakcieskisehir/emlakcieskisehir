@@ -1,0 +1,15 @@
+---
+import Ana from '../layouts/Ana.astro';
+import ayarlar from '../data/ayarlar.json';
+import { telLink } from '../lib/yardimci';
+---
+<Ana baslik="Sayfa bulunamadı" noindex>
+  <section class="blok">
+    <div class="wrap">
+      <span class="durum durum--duz" style="margin-bottom:22px">SATILDI</span>
+      <h1>Aradığınız sayfa burada değil</h1>
+      <p class="soluk">İlan kaldırılmış ya da adres değişmiş olabilir. Güncel ilanlara bakabilir veya bana sorabilirsiniz.</p>
+      <div class="butonlar"><a class="btn btn--koyu" href="/portfoy/">Güncel ilanlar</a><a class="btn btn--cizgi" href={telLink(ayarlar.telefon)}>{ayarlar.telefon}</a></div>
+    </div>
+  </section>
+</Ana>

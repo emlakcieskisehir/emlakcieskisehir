@@ -1,0 +1,33 @@
+---
+import Ana from '../../layouts/Ana.astro';
+import ayarlar from '../../data/ayarlar.json';
+import { render } from 'astro:content';
+import { rehberListesi } from '../../lib/icerik';
+import { tarihYaz, telLink } from '../../lib/yardimci';
+export async function getStaticPaths() {
+  const hepsi = await rehberListesi();
+  return hepsi.map((r) => ({ params: { slug: r.slug }, props: { rehber: r } }));
+}
+const { rehber } = Astro.props;
+const d = rehber.data;
+const { Content } = await render(rehber);
+const sema = {
+  '@context': 'https://schema.org', '@type': 'Article', headline: d.baslik, description: d.ozet,
+  datePublished: d.tarih.toISOString().slice(0, 10), author: { '@type': 'Person', name: ayarlar.danisman_adi },
+  image: d.kapak ? new URL(d.kapak, Astro.site).href : undefined,
+};
+---
+<Ana baslik={d.baslik} aciklama={d.ozet} gorsel={d.kapak} schema={sema}>
+  <article class="makale">
+    <div class="yol"><a href="/">Ana sayfa</a> / <a href="/rehberler/">Rehberler</a></div>
+    <h1>{d.baslik}</h1>
+    <p class="soluk" style="margin:0">{ayarlar.danisman_adi}, {tarihYaz(d.tarih)}</p>
+    {d.kapak && <img class="makale-kapak" src={d.kapak} alt="" width="1200" height="675" />}
+    <div class="metin"><Content /></div>
+    <div class="koyu-bant" style="margin-top:56px;padding:44px 28px">
+      <h2 style="font-size:var(--t-xl)">Sorunuz mu var?</h2>
+      <p style="margin-bottom:16px">Kendi durumunuzu konuşmak isterseniz arayın, telefonda da yardımcı olabilirim.</p>
+      <a class="btn btn--acik" href={telLink(ayarlar.telefon)}>{ayarlar.telefon}</a>
+    </div>
+  </article>
+</Ana>

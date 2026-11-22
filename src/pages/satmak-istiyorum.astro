@@ -1,0 +1,34 @@
+---
+import Ana from '../layouts/Ana.astro';
+import DegerlemeForm from '../components/DegerlemeForm.astro';
+import ayarlar from '../data/ayarlar.json';
+import anasayfa from '../data/anasayfa.json';
+import { telLink } from '../lib/yardimci';
+---
+<Ana baslik={`${ayarlar.sehir}'de evimi satmak istiyorum: ücretsiz değerleme`} aciklama={`${ayarlar.sehir} ${ayarlar.hizmet_bolgeleri} bölgesinde evinizi satmak ya da kiraya vermek için ücretsiz değerleme isteyin. ${ayarlar.danisman_adi}, ${ayarlar.telefon}.`}>
+  <section class="sayfa-bas">
+    <div class="wrap">
+      <div class="yol"><a href="/">Ana sayfa</a> / Evimi satmak istiyorum</div>
+      <h1>Evinizi satmak ya da kiraya vermek mi istiyorsunuz?</h1>
+      <p>Önce evinizi görüp gerçekçi bir fiyat söyleyeyim. Bunun için ücret almıyorum.</p>
+    </div>
+  </section>
+  <section class="blok">
+    <div class="wrap degerleme">
+      <div>
+        <h2>Satış nasıl ilerliyor</h2>
+        <ol class="kontrol-liste" style="padding-left:1.2em">
+          {anasayfa.surec.map((s) => <li><strong style="color:var(--siyah)">{s.baslik}.</strong> {s.metin}</li>)}
+        </ol>
+        <h2 style="margin-top:40px">Benden ne beklemelisiniz</h2>
+        <ul class="kontrol-liste">
+          <li>Evinizi olduğundan pahalı göstermem; doğru fiyattan çıkan ev daha hızlı satılır.</li>
+          <li>Her görüşmeden sonra kimin geldiğini ve ne dediğini size söylerim.</li>
+          <li>Hizmet bedelini en başta yazılı olarak konuşuruz, işlem olmazsa ücret yoktur.</li>
+        </ul>
+        <p style="margin-top:28px">Formla uğraşmak istemezseniz: <a href={telLink(ayarlar.telefon)} style="font-weight:700">{ayarlar.telefon}</a></p>
+      </div>
+      <DegerlemeForm baslik="Değerleme için bilgilerinizi bırakın" />
+    </div>
+  </section>
+</Ana>

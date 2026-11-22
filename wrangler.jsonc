@@ -1,0 +1,10 @@
+// Sadece Cloudflare projesi "Workers" olarak bağlandıysa kullanılır.
+// "Pages" projelerinde bu dosya yok sayılır; build ayarları panelden yapılır.
+{
+  "name": "emlakcieskisehir",
+  "compatibility_date": "2026-11-01",
+  "assets": {
+    "directory": "./dist",
+    "not_found_handling": "404-page"
+  }
+}

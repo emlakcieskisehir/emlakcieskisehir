@@ -1,0 +1,80 @@
+---
+import ayarlar from '../data/ayarlar.json';
+interface Props { baslik?: string; }
+const { baslik = 'Evinizin değerini öğrenin' } = Astro.props;
+const ilceler = ayarlar.hizmet_bolgeleri.split(',').map((s: string) => s.trim()).filter(Boolean);
+---
+<form class="form" id="form" data-anahtar={ayarlar.form_anahtari}>
+  <h3>{baslik}</h3>
+  <p class="soluk">Formu doldurun, aynı gün ya da ertesi gün sizi arayayım.</p>
+  <input type="hidden" name="subject" value={`Web sitesi: yeni değerleme talebi`} />
+  <input type="checkbox" name="botcheck" class="gizli" tabindex="-1" autocomplete="off" />
+  <div class="form-grid">
+    <div><label for="f-ad">Ad Soyad *</label><input id="f-ad" name="Ad Soyad" required autocomplete="name" /></div>
+    <div><label for="f-tel">Telefon *</label><input id="f-tel" name="Telefon" type="tel" required autocomplete="tel" placeholder="05xx xxx xx xx" /></div>
+    <div>
+      <label for="f-talep">Talebiniz</label>
+      <select id="f-talep" name="Talep">
+        <option>Satmak istiyorum</option>
+        <option>Kiraya vermek istiyorum</option>
+        <option>Ev / iş yeri arıyorum</option>
+        <option>Sadece değerini öğrenmek istiyorum</option>
+      </select>
+    </div>
+    <div>
+      <label for="f-tip">Mülk tipi</label>
+      <select id="f-tip" name="Mülk Tipi">
+        <option>Daire</option><option>Villa / Müstakil</option><option>Arsa</option><option>Dükkan</option><option>Ofis</option><option>Diğer</option>
+      </select>
+    </div>
+    <div>
+      <label for="f-ilce">İlçe</label>
+      <select id="f-ilce" name="İlçe">
+        {ilceler.map((i: string) => <option>{i}</option>)}
+        <option>Diğer</option>
+      </select>
+    </div>
+    <div><label for="f-mah">Mahalle</label><input id="f-mah" name="Mahalle" /></div>
+    <div class="tam"><label for="f-not">Notunuz</label><textarea id="f-not" name="Not" placeholder="Örn: 3+1, 120 m², 3. kat, 2 ay içinde satmak istiyorum"></textarea></div>
+    <div class="tam">
+      <label class="onay"><input type="checkbox" required name="KVKK Onayı" value="Onaylandı" /> <span><a href="/kvkk/" target="_blank">KVKK Aydınlatma Metni</a>'ni okudum; bilgilerimin bu talep için işlenmesini ve benimle iletişime geçilmesini kabul ediyorum.</span></label>
+    </div>
+    <div class="tam"><button class="btn btn--koyu btn--tam" type="submit">Formu gönder</button></div>
+  </div>
+  <p class="form-durum" role="status" aria-live="polite"></p>
+</form>
+
+<script>
+  document.querySelectorAll<HTMLFormElement>('form[data-anahtar]').forEach((form) => {
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const durum = form.querySelector('.form-durum') as HTMLElement;
+      const buton = form.querySelector('button[type=submit]') as HTMLButtonElement;
+      const anahtar = form.dataset.anahtar;
+      if (!anahtar) {
+        durum.className = 'form-durum hata';
+        durum.textContent = 'Form henüz kurulmadı: site ayarlarında form anahtarı boş. Şimdilik telefonla ulaşabilirsiniz.';
+        return;
+      }
+      const veri = Object.fromEntries(new FormData(form).entries());
+      buton.disabled = true; buton.textContent = 'Gönderiliyor…';
+      try {
+        const yanit = await fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+          body: JSON.stringify({ access_key: anahtar, from_name: 'Web Sitesi', ...veri }),
+        });
+        const sonuc = await yanit.json();
+        if (!sonuc.success) throw new Error(sonuc.message);
+        form.reset();
+        durum.className = 'form-durum ok';
+        durum.textContent = 'Formunuz ulaştı. Sizi en kısa sürede arayacağım.';
+      } catch {
+        durum.className = 'form-durum hata';
+        durum.textContent = 'Form gönderilemedi. İnternet bağlantınızı kontrol edip tekrar deneyin ya da telefonla ulaşın.';
+      } finally {
+        buton.disabled = false; buton.textContent = "Formu gönder";
+      }
+    });
+  });
+</script>

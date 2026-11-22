@@ -1,0 +1,7 @@
+{
+  "yorumlar": [
+    { "isim": "Örnek Müşteri", "metin": "Bu alana gerçek bir müşteri yorumu gelecek. Google İşletme Profilinizdeki yorumları buraya kopyalayabilirsiniz.", "puan": 5 },
+    { "isim": "Örnek Müşteri", "metin": "Örnek yorum metni. Yayına almadan önce yönetim panelinden gerçek yorumlarla değiştirin veya silin.", "puan": 5 },
+    { "isim": "Örnek Müşteri", "metin": "Örnek yorum metni. Müşterinizin izniyle adını ve yorumunu ekleyin.", "puan": 5 }
+  ]
+}
