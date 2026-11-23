@@ -344,6 +344,65 @@ textarea { min-height: 110px; resize: vertical; }
   .hero-butonlar .btn { flex: 1 1 auto; }
 }
 
+/* Yeni referans: gün batımı görselli, koyu ve mürdüm tonlu danışmanlık vitrini. */
+:root { --siyah:#17151a; --gri:#f1ece8; --zemin:#f7f4f1; --beyaz:#fff; --cizgi:#e6dfda; --wa:#1a7d44; }
+body { background:#f5f1ed; }
+.header { position:absolute; top:20px; left:0; right:0; z-index:5; background:transparent; border:0; }
+.header > .wrap { max-width:1380px; min-height:64px; padding:0 34px; display:flex; align-items:center; justify-content:space-between; gap:20px; color:white; }
+.logo { color:white; font-size:1.15rem; font-weight:600; letter-spacing:-.04em; text-decoration:none; }
+.logo-isaret { background:#74115f; color:#fff; border:0; }
+.nav { padding:8px; border:1px solid #ffffff45; border-radius:999px; background:#241c2370; backdrop-filter:blur(14px); }
+.nav a { color:#fff; font-size:.82rem; padding:9px 13px; }
+.nav a:hover,.nav a[aria-current="page"] { color:#211a20; background:#fff; border-radius:999px; }
+.header-sag .alti-cizili { display:inline-flex; padding:12px 18px; color:#fff; background:#771268; border:1px solid #ffffff40; border-radius:999px; text-decoration:none; font-size:.9rem; }
+.menu-btn { color:white; border-color:#ffffff70; }
+.hero { min-height:730px; padding:110px 0 32px; color:#fff; background:linear-gradient(90deg,rgba(20,17,18,.72) 0%,rgba(20,17,18,.38) 48%,rgba(20,17,18,.08) 100%),url('/uploads/hero-sunset.jpg') center 48%/cover no-repeat; overflow:hidden; }
+.hero .wrap { max-width:1380px; min-height:570px; display:grid; grid-template-columns:minmax(0,1.1fr) minmax(340px,.9fr); align-items:end; gap:20px; }
+.hero-sol { height:100%; display:flex; flex-direction:column; justify-content:center; gap:54px; padding:20px 0 12px; }
+.hero-principal { max-width:650px; }
+.hero-kicker { color:#f6d9ba; font-size:.83rem; font-weight:600; letter-spacing:.12em; text-transform:uppercase; margin-bottom:22px; }
+.merhaba { max-width:12ch; font-size:clamp(3.3rem,6.3vw,6.1rem); line-height:.98; font-weight:450; letter-spacing:-.065em; }
+.hero-alt { max-width:48ch; color:#fff; font-size:1.06rem; margin:22px 0 26px; }
+.hero-butonlar { display:flex; flex-wrap:wrap; gap:12px; }
+.hero .btn--koyu { background:#771268; border-color:#771268; }
+.hero .btn--cizgi { border-color:#fff; color:#fff; background:#ffffff17; }
+.hero .btn--cizgi:hover { color:#211a20; background:#fff; }
+.hero-alt-bilgi { color:#fff; display:flex; align-items:end; justify-content:space-between; gap:30px; }
+.hero-alt-bilgi .rakam strong { color:white; }
+.hero-alt-bilgi .rakam span,.asagi { color:#f4ebe6; }
+.hero-portre { width:100%; max-width:510px; justify-self:end; align-self:end; padding:0; background:transparent; border-radius:0; }
+.hero-portre img { width:100%; height:580px; min-height:0; max-height:none; object-fit:cover; object-position:center 22%; border-radius:230px 230px 0 0; box-shadow:0 20px 55px #1c121b70; }
+.blok { padding:88px 0; }
+.blok--zemin { background:#eee8e3; }
+.btn--koyu { background:#771268; border-color:#771268; }
+.btn--koyu:hover { background:#5f0b51; }
+.koyu-bant { background:#241c23; }
+.footer { background:#241c23; }
+@media(max-width:860px) {
+  .header { top:10px; }
+  .header > .wrap { padding:0 20px; }
+  .nav { position:absolute; top:66px; left:20px; right:20px; display:none; flex-direction:column; border-radius:18px; background:#241c23f2; }
+  .nav.acik { display:flex; }
+  .header-sag { margin-left:auto; }
+  .header-sag .alti-cizili { padding:9px 12px; font-size:.78rem; }
+  .hero { padding-top:108px; }
+  .hero .wrap { grid-template-columns:minmax(0,1fr) minmax(260px,.8fr); gap:14px; }
+  .hero-sol { padding:40px 0 14px; }
+  .hero-portre img { height:450px; border-radius:180px 180px 0 0; }
+}
+@media(max-width:640px) {
+  .header > .wrap { min-height:54px; padding:0 16px; gap:9px; }
+  .logo { font-size:.95rem; }
+  .header-sag .alti-cizili { font-size:.72rem; padding:8px 10px; }
+  .hero { min-height:0; padding:96px 0 0; background-position:58% center; }
+  .hero .wrap { grid-template-columns:1fr; gap:0; }
+  .hero-sol { padding:40px 0 24px; gap:30px; }
+  .merhaba { font-size:clamp(3rem,13vw,4.3rem); }
+  .hero-portre { justify-self:center; max-width:360px; width:90%; }
+  .hero-portre img { height:420px; border-radius:170px 170px 0 0; }
+  .hero-alt-bilgi { display:none; }
+}
+
 /* Warm editorial realtor palette adapted from the supplied reference */
 :root {
   --siyah: #595653;

@@ -20,30 +20,30 @@ const sssSema = {
   '@type': 'FAQPage',
   mainEntity: anasayfa.sss.map((s) => ({ '@type': 'Question', name: s.soru, acceptedAnswer: { '@type': 'Answer', text: s.cevap } })),
 };
-const portre = hakkimda.foto?.includes('danisman.svg') ? '/uploads/portre.svg' : hakkimda.foto;
+const portre = '/uploads/realtor-stock-turkey.jpg';
 ---
 <Ana baslik={`${ayarlar.danisman_adi} – ${ayarlar.sehir} emlak, satılık ve kiralık evler`} schema={sssSema}>
   <section class="hero">
     <div class="wrap">
       <div class="hero-sol">
         <div class="hero-principal">
-          <p class="hero-kicker">{ayarlar.unvan} <span aria-hidden="true">/</span> {ayarlar.sehir}</p>
-          <h1 class="merhaba">{anasayfa.hero_baslik}</h1>
-          <p class="hero-alt">{anasayfa.hero_metin}</p>
+          <p class="hero-kicker">Eskişehir’de güvenilir emlak danışmanlığı</p>
+          <h1 class="merhaba">Evinizi güvenle alın, satın veya kiralayın</h1>
+          <p class="hero-alt">Eskişehir’in mahallelerini tanıyan, sürecin her adımında yanınızda olan gayrimenkul danışmanınız Ertuğrul Aydın.</p>
           <div class="hero-butonlar">
-            <a class="btn btn--koyu" href="/satmak-istiyorum/#form">Evimin değerini öğren</a>
-            <a class="btn btn--cizgi" href="/portfoy/">İlanlara bak</a>
+            <a class="btn btn--koyu" href={telLink(ayarlar.telefon)}>Hemen arayın · {ayarlar.telefon}</a>
+            <a class="btn btn--cizgi" href="/portfoy/">İlanları keşfedin</a>
           </div>
         </div>
         <div class="hero-alt-bilgi">
           <div class="rakamlar">
             {anasayfa.rakamlar.map((r) => <div class="rakam"><strong><sup>+</sup>{r.deger}</strong><span>{r.etiket}</span></div>)}
           </div>
-          <a class="asagi" href="#ilanlar">Aşağı kaydırın ↓</a>
+          <a class="asagi" href="#ilanlar">Öne çıkan ilanlar ↓</a>
         </div>
       </div>
       <div class="hero-portre">
-        <img src={portre} alt={ayarlar.danisman_adi} width="560" height="700" fetchpriority="high" />
+        <img src={portre} alt="Temsili emlak danışmanı portresi" width="560" height="700" fetchpriority="high" />
       </div>
     </div>
   </section>
