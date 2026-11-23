@@ -72,7 +72,7 @@ const basHarf = ayarlar.danisman_adi.split(' ').map((k: string) => k.charAt(0)).
   
   {semalar.map((s) => <script type="application/ld+json" set:html={JSON.stringify(s)} />)}
 </head>
-<body>
+<body class={yol === '/' ? 'ana-sayfa' : 'ic-sayfa'}>
   <header class="header">
     <div class="wrap">
       <a href="/" class="logo" aria-label={`${ayarlar.ofis_adi}, ana sayfa`}>

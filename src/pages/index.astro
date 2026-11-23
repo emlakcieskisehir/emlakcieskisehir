@@ -12,9 +12,9 @@ import { telLink, waLink } from '../lib/yardimci';
 
 const ilanlar = await aktifIlanlar();
 const secili = ilanlar.filter((i) => i.data.one_cikan);
-const vitrin = (secili.length ? secili : ilanlar).slice(0, 8);
+const vitrin = (secili.length ? secili : ilanlar).slice(0, 3);
 const rehberler = (await rehberListesi()).slice(0, 3);
-const yorumlar = yorumData.yorumlar ?? [];
+const yorumlar = (yorumData.yorumlar ?? []).filter((y) => !/örnek|değiştirin|gelecek/i.test(`${y.isim} ${y.metin}`));
 const sssSema = {
   '@context': 'https://schema.org',
   '@type': 'FAQPage',
@@ -48,7 +48,7 @@ const portre = '/uploads/realtor-stock-turkey.jpg';
     </div>
   </section>
 
-  <section class="blok blok--zemin">
+  <section class="blok blok--zemin proof-section">
     <div class="wrap hakkinda">
       <div class="hakkinda-yazi">
         <span class="hap">Hakkımda</span>
@@ -60,10 +60,12 @@ const portre = '/uploads/realtor-stock-turkey.jpg';
         <span class="kart-ikon" aria-hidden="true"><Ikon ad="saat" /></span>
         <div class="buyuk">{anasayfa.istatistik.deger}</div>
         <small>{anasayfa.istatistik.aciklama}</small>
-        <img src={hakkimda.foto} alt="" loading="lazy" width="256" height="256" />
+        <img src="/uploads/hero-sunset.jpg" alt="Gün batımında çağdaş bir konut" loading="lazy" width="800" height="600" />
       </div>
       <ul class="madde-liste">
-        {anasayfa.hizmetler.slice(0, 3).map((h) => <li><span><strong>{h.baslik}</strong>{h.metin}</span></li>)}
+        <li><span><strong>{anasayfa.rakamlar[0]?.deger}+</strong> yıllık yerel piyasa deneyimi</span></li>
+        <li><span><strong>{anasayfa.rakamlar[1]?.deger}+</strong> satılan ve kiralanan konut</span></li>
+        <li><span><strong>2</strong> ana hizmet bölgesi: Tepebaşı ve Odunpazarı</span></li>
       </ul>
     </div>
   </section>
@@ -80,19 +82,18 @@ const portre = '/uploads/realtor-stock-turkey.jpg';
     </div>
   </section>
 
-  <section class="blok" style="padding-top:0">
+  <section class="blok service-section" style="padding-top:0">
     <div class="wrap">
       <div class="blok-ust">
         <div><span class="hap">Hizmetler</span><h2>Neler yapıyorum</h2></div>
         <p>İşlem gerçekleşmeden hizmet bedeli almıyorum. Oranı ilk görüşmede yazılı olarak konuşuyoruz.</p>
       </div>
-      <div class="satirlar">
-        {anasayfa.hizmetler.map((h) => (
-          <div class="satir">
-            <div><h3>{h.baslik}</h3>{h.kimin_icin && <span class="alt">{h.kimin_icin}</span>}</div>
-            <p>{h.metin}</p>
-            <div class="rozetler">{(h.etiketler ?? []).map((e: string) => <span class="rozet">{e}</span>)}</div>
-          </div>
+      <div class="service-list">
+        {anasayfa.hizmetler.map((h, i) => (
+          <details class="service-item" open={i === 0}>
+            <summary><span class="service-number">{String(i + 1).padStart(2, '0')}</span><span><strong>{h.baslik}</strong>{h.kimin_icin && <small>{h.kimin_icin}</small>}</span><span class="service-toggle" aria-hidden="true"></span></summary>
+            <div class="service-content"><p>{h.metin}</p><div class="rozetler">{(h.etiketler ?? []).map((e: string) => <span class="rozet">{e}</span>)}</div></div>
+          </details>
         ))}
       </div>
     </div>
@@ -171,9 +172,11 @@ const portre = '/uploads/realtor-stock-turkey.jpg';
 
   <section class="blok">
     <div class="wrap">
-      <div class="blok-ust ortada" style="display:block"><span class="hap">SSS</span><h2>Sık sorulanlar</h2></div>
+      <div class="faq-layout">
+      <div class="faq-intro"><span class="hap">Yardımcı bilgiler</span><h2>Sık sorulan sorular</h2><img src="/uploads/hero-sunset.jpg" alt="Gün batımında modern bir ev" loading="lazy" /><p>Alım, satım ve kiralama sürecinizle ilgili aklınıza takılanları yanıtlayalım.</p><a class="btn btn--koyu" href="/iletisim/">Bize ulaşın</a></div>
       <div class="sss">
         {anasayfa.sss.map((s) => <details><summary>{s.soru}</summary><p>{s.cevap}</p></details>)}
+      </div>
       </div>
     </div>
   </section>
