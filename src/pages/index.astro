@@ -21,7 +21,7 @@ const sssSema = {
   '@type': 'FAQPage',
   mainEntity: anasayfa.sss.map((s) => ({ '@type': 'Question', name: s.soru, acceptedAnswer: { '@type': 'Answer', text: s.cevap } })),
 };
-const portre = '/uploads/danisman-ertugrul.jpg';
+const portre = '/uploads/danisman-ertugrul-seffaf.png';
 ---
 <Ana baslik={`${ayarlar.danisman_adi} – ${ayarlar.sehir} emlak, satılık ve kiralık evler`} schema={sssSema}>
   <section class="hero">
@@ -29,7 +29,7 @@ const portre = '/uploads/danisman-ertugrul.jpg';
       <div class="hero-sol">
         <div class="hero-principal">
           <p class="hero-kicker">Eskişehir’de güvenilir emlak danışmanlığı</p>
-          <h1 class="merhaba">Evinizi güvenle alın, satın veya kiralayın</h1>
+          <h1 class="merhaba">Evinizi değerinde satıyoruz</h1>
           <p class="hero-alt">Eskişehir’in mahallelerini tanıyan, sürecin her adımında yanınızda olan gayrimenkul danışmanınız Ertuğrul Aydın.</p>
           <div class="hero-butonlar">
             <a class="btn btn--koyu hero-call" href={telLink(ayarlar.telefon)}><span>Hemen arayın</span><small>{ayarlar.telefon}</small></a>

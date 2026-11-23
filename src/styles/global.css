@@ -657,3 +657,138 @@ main .btn--koyu, main .btn--wa, .header-sag .alti-cizili, .durum { color:#fff !i
 .form-durum.hata { color:#c4121a !important; border-color:#c4121a !important; background:#fff !important; }
 .nav a:hover,.nav a[aria-current="page"] { color:#000 !important; background:#fff !important; }
 .foto-kredisi,.eskisehir-galeri figcaption span { color:#fff !important; }
+
+/* Ana sayfa hero: başlık, açıklama ve arama düğmesini ayrı tut; şeffaf portreyi şehir fotoğrafına oturt. */
+.hero {
+  min-height:680px !important;
+  padding:112px 0 24px !important;
+  background:linear-gradient(90deg,#000d 0%,#0009 48%,#0004 100%),url('/uploads/eskisehir-porsuk.jpg') center 48%/cover no-repeat !important;
+}
+.hero .wrap {
+  min-height:540px !important;
+  grid-template-columns:minmax(0,1.05fr) minmax(320px,.95fr) !important;
+  align-items:stretch !important;
+  gap:30px !important;
+}
+.hero-sol {
+  min-width:0;
+  height:auto !important;
+  justify-content:center !important;
+  gap:0 !important;
+  padding:36px 0 32px 24px !important;
+}
+.hero-principal { width:100%; max-width:640px !important; }
+.hero-kicker {
+  display:inline-block;
+  max-width:100%;
+  margin:0 0 22px !important;
+  padding:7px 12px;
+  border-radius:3px;
+  background:#c4121a;
+  color:#fff !important;
+  font-size:.8rem;
+  line-height:1.45;
+  letter-spacing:.06em;
+  white-space:normal;
+}
+.merhaba {
+  max-width:11ch !important;
+  margin:0 !important;
+  font-size:clamp(3.1rem,6.4vw,5.8rem) !important;
+  line-height:1.02 !important;
+  letter-spacing:-.055em !important;
+  overflow-wrap:normal;
+}
+.hero-alt {
+  display:block !important;
+  max-width:44ch !important;
+  margin:20px 0 0 !important;
+  font-size:1rem !important;
+  line-height:1.65 !important;
+}
+.hero-alt::before { display:none !important; }
+.hero-butonlar {
+  display:flex !important;
+  align-items:stretch !important;
+  gap:14px !important;
+  margin:24px 0 0 !important;
+}
+.hero-call {
+  min-width:194px !important;
+  min-height:62px;
+  flex:0 0 auto !important;
+  align-items:flex-start !important;
+  justify-content:center !important;
+  padding:11px 19px !important;
+  white-space:normal !important;
+}
+.hero-call span { font-size:1rem; font-weight:600; }
+.hero-call small { line-height:1.25; }
+.hero-butonlar > .btn--cizgi { min-height:62px; padding:12px 20px; }
+.hero-alt-bilgi { margin-top:32px !important; }
+.hero-portre {
+  width:100% !important;
+  max-width:none !important;
+  min-width:0;
+  display:flex;
+  justify-content:center;
+  align-items:flex-end;
+  overflow:visible;
+}
+.hero-portre img {
+  width:auto !important;
+  height:min(650px,calc(100vh - 150px)) !important;
+  max-width:100% !important;
+  aspect-ratio:auto !important;
+  object-fit:contain !important;
+  object-position:center bottom !important;
+  -webkit-mask-image:none !important;
+  mask-image:none !important;
+  filter:drop-shadow(0 14px 24px #0008) saturate(1.12) contrast(1.03) !important;
+}
+.ic-sayfa .hakkimda > img {
+  width:100% !important;
+  height:auto !important;
+  max-width:420px;
+  max-height:none !important;
+  aspect-ratio:auto !important;
+  object-fit:contain !important;
+  object-position:center bottom !important;
+  background:transparent !important;
+}
+.iletisim-portre-kart {
+  height:auto !important;
+  min-height:0;
+  overflow:visible !important;
+  background:transparent !important;
+}
+.iletisim-portre-kart img {
+  width:100% !important;
+  height:auto !important;
+  max-height:480px;
+  aspect-ratio:auto !important;
+  object-fit:contain !important;
+  object-position:center bottom !important;
+}
+@media(max-width:860px) {
+  .hero { min-height:0 !important; padding-top:100px !important; }
+  .hero .wrap { grid-template-columns:minmax(0,1fr) minmax(250px,.8fr) !important; gap:12px !important; }
+  .hero-sol { padding:32px 0 24px !important; }
+  .merhaba { font-size:clamp(2.8rem,7vw,4.5rem) !important; }
+  .hero-portre img { height:min(520px,65vh) !important; }
+}
+@media(max-width:640px) {
+  .hero { padding:90px 0 0 !important; background-position:58% center !important; }
+  .hero .wrap { grid-template-columns:minmax(0,1fr) !important; gap:0 !important; }
+  .hero-sol { padding:30px 0 12px !important; }
+  .hero-principal { max-width:none !important; }
+  .hero-kicker { margin-bottom:16px !important; font-size:.72rem; letter-spacing:.04em; }
+  .merhaba { max-width:12ch !important; font-size:clamp(2.75rem,12.5vw,4.1rem) !important; line-height:1.04 !important; }
+  .hero-alt { margin-top:16px !important; font-size:.96rem !important; line-height:1.55 !important; }
+  .hero-butonlar { flex-wrap:wrap !important; margin-top:20px !important; gap:10px !important; }
+  .hero-call { flex:1 1 100% !important; min-width:0 !important; min-height:58px; }
+  .hero-butonlar > .btn--cizgi { flex:1 1 100%; min-height:52px; }
+  .hero-alt-bilgi { display:none !important; }
+  .hero-portre { width:100% !important; max-width:100% !important; margin:0 auto; }
+  .hero-portre img { width:auto !important; height:min(500px,62vh) !important; max-width:100% !important; }
+}
