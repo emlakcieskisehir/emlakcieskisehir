@@ -591,3 +591,69 @@ a:hover { color:var(--vurgu); }
   .portfoy-bos img { height:250px; }
   .foto-kredisi { text-align:left; }
 }
+
+/* Son renk ve fotoğraf düzeltmeleri. */
+:root { --siyah:#000; --gri:#000; --gri-acik:#000; --zemin:#fff; --beyaz:#fff; --cizgi:#000; --cizgi-koyu:#000; --koyu-metin:#fff; --wa:#000; --vurgu:#c4121a; --vurgu-koyu:#990e16; }
+body, main, .blok, .blok--zemin, .proof-section, .service-section, .eskisehir-bolum, .sayfa-bas, .iletisim, .form, .filtre, .detay-yan, .rehber-kart, .yorum, .sss details, .bos, .portfoy-bos, .ilan-kaynak-kart { background-color:#fff !important; color:#000 !important; }
+body, p, small, label, dt, dd, .soluk, .alt, .metin, .yol, .yol a, .blok-ust p, .service-item summary small, .service-content p, .faq-intro p, .sayfa-bas p, .iletisim dt, .foto-kredisi, .portfoy-bos p, .ilan-kaynak-kart p, .proof-section .hakkinda-yazi p, .proof-section .madde-liste li span, .ilan-bilgi { color:#000 !important; }
+h1, h2, h3, h4, .ilan-baslik, .footer-buyuk { color:#000; }
+a { color:#000; }
+a:hover, .alti-cizili .ok, .ilan-fiyat, .detay-fiyat, .yorum figcaption, .service-item[open] .service-number, .service-item[open] summary strong { color:#c4121a !important; }
+*, *::before, *::after { border-color:#000; }
+.header, .ic-sayfa .header, .nav.acik, .footer, .koyu-bant, .detay-yan .btn--wa, .ic-sayfa .hakkimda .btn--wa, .iletisim .btn--wa, .wa-sabit { background-color:#000 !important; color:#fff !important; }
+.header .logo, .header .nav a, .header .header-sag a, .footer, .footer a, .footer p, .footer span, .footer nav a, .koyu-bant h2, .koyu-bant p, .koyu-bant .kucuk, .detay-yan .btn--wa, .ic-sayfa .hakkimda .btn--wa, .iletisim .btn--wa { color:#fff !important; }
+.nav a:hover, .nav a[aria-current="page"] { background:#fff !important; color:#000 !important; }
+.btn--koyu, .hero .btn--koyu, .hero-call, .header-sag .alti-cizili, .durum, .hap, .service-item[open] .service-toggle, .koyu-bant .btn--acik { background:#c4121a !important; border-color:#c4121a !important; color:#fff !important; }
+.btn--koyu:hover, .hero .btn--koyu:hover, .header-sag .alti-cizili:hover { background:#990e16 !important; border-color:#990e16 !important; color:#fff !important; }
+.btn--cizgi, .hero .btn--cizgi { color:#000 !important; background:#fff !important; border-color:#000 !important; }
+.hero .btn--cizgi { color:#fff !important; background:#00000080 !important; border-color:#fff !important; }
+.hero .btn--cizgi:hover { color:#000 !important; background:#fff !important; }
+.btn--wa, .detay-yan .btn--wa, .ic-sayfa .hakkimda .btn--wa, .iletisim .btn--wa { background:#000 !important; border-color:#000 !important; color:#fff !important; }
+.blok-ust, .service-list, .service-item, .service-toggle, .sss details, .yorum, .ilan, .rehber-kart, .detay-yan, .form, .filtre, .iletisim, .portfoy-bos, .ilan-kaynak-kart { border-color:#000 !important; }
+.proof-section .kart-istatistik { background:#000 !important; color:#fff !important; }
+.proof-section .kart-istatistik .buyuk, .proof-section .kart-istatistik small, .proof-section .kart-istatistik .kart-ikon { color:#fff !important; }
+.proof-section .madde-liste strong, .service-number { color:#c4121a !important; }
+.service-content .rozet, .rozet { background:#fff !important; color:#000 !important; border:1px solid #000; }
+.hero { color:#fff !important; }
+.hero h1, .hero .hero-kicker, .hero .hero-alt, .hero .hero-alt-bilgi, .hero .hero-alt-bilgi a, .hero .hero-servis-tags span { color:#fff !important; }
+.hero-kicker { display:table; max-width:100%; margin:0 0 26px !important; padding:7px 12px; background:#c4121a; line-height:1.45; white-space:normal; }
+.hero-sol { gap:32px; }
+.hero-principal { display:flex; flex-direction:column; align-items:flex-start; gap:0; }
+.merhaba { margin:0; line-height:1.04; }
+.hero-alt { margin:24px 0 0; line-height:1.65; }
+.hero-butonlar { margin-top:28px; align-items:stretch; gap:14px; }
+.hero-call { display:flex; min-width:220px; flex-direction:column; align-items:flex-start; justify-content:center; gap:3px; white-space:nowrap; line-height:1.3; }
+.hero-call small { color:#fff !important; font-size:.82rem; }
+.hero-alt-bilgi { margin-top:14px; }
+.hero-servis-tags { gap:9px; }
+.hero-servis-tags span { border-color:#fff !important; background:#000 !important; }
+.hero-portre { padding:0 !important; border:0 !important; border-radius:0 !important; background:transparent !important; box-shadow:none !important; }
+.hero-portre img { display:block; width:100%; height:auto !important; max-height:none; aspect-ratio:1 / 1; object-fit:contain; object-position:center bottom; border:0 !important; border-radius:0 !important; box-shadow:none !important; filter:saturate(1.15) contrast(1.04) !important; }
+.ic-sayfa .hakkimda > img { border:0 !important; border-radius:0 !important; box-shadow:none !important; filter:saturate(1.15) contrast(1.04) !important; }
+.iletisim-portre-kart { border:0 !important; border-radius:0 !important; background:transparent !important; }
+.iletisim-portre-kart img { opacity:1 !important; border:0 !important; border-radius:0 !important; box-shadow:none !important; filter:saturate(1.15) contrast(1.04) !important; }
+img { filter:saturate(1.12) contrast(1.02) !important; }
+.hero-portre img, .ic-sayfa .hakkimda > img, .iletisim-portre-kart img { filter:saturate(1.15) contrast(1.04) !important; }
+.eskisehir-galeri img, .proof-section .kart-istatistik img, .faq-intro img, .ilan-foto img, .makale-kapak, .portfoy-bos img { filter:saturate(1.2) contrast(1.05) !important; }
+.eskisehir-galeri figcaption { background:linear-gradient(90deg,#000000e8,#000000b0) !important; }
+.foto-kredisi { color:#000 !important; }
+.harita iframe { filter:grayscale(1) contrast(1.1); }
+@media(max-width:640px) {
+  .hero-sol { gap:28px; }
+  .hero-kicker { margin-bottom:22px !important; }
+  .hero-butonlar { margin-top:26px; }
+  .hero-call { min-width:0; flex:1 1 100%; }
+  .hero-portre { width:100% !important; max-width:100% !important; }
+  .hero-portre img { width:100%; height:auto !important; aspect-ratio:1 / 1; }
+}
+.nav { background:#000 !important; border-color:#fff !important; }
+.logo-isaret { background:#c4121a !important; color:#fff !important; }
+main :is(p,small,label,dt,dd,li,summary,figcaption,blockquote,th,td,.soluk,.alt,.yol,.meta) { color:#000 !important; }
+.hero :is(p,small,label,dt,dd,li,summary,figcaption,blockquote,th,td,.asagi,.hero-servis-tags span) { color:#fff !important; }
+.footer :is(p,small,label,dt,dd,li,summary,span,a) { color:#fff !important; }
+main .btn--koyu, main .btn--wa, .header-sag .alti-cizili, .durum { color:#fff !important; }
+.hero .btn--cizgi { color:#fff !important; }
+.form-durum.ok { color:#000 !important; border-color:#000 !important; background:#fff !important; }
+.form-durum.hata { color:#c4121a !important; border-color:#c4121a !important; background:#fff !important; }
+.nav a:hover,.nav a[aria-current="page"] { color:#000 !important; background:#fff !important; }
+.foto-kredisi,.eskisehir-galeri figcaption span { color:#fff !important; }
