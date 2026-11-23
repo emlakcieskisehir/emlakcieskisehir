@@ -773,7 +773,7 @@ body:not(.ic-sayfa) .header {
 .ana-metrikler strong,.ana-metrikler span { display:block; }
 .ana-metrikler strong { font-size:clamp(1.2rem,2vw,1.8rem); line-height:1.15; color:#111; }
 .ana-metrikler span { margin-top:5px; font-size:.86rem; color:#444; }
-.logo-imza { color:#fff; font-family:"Segoe Script","Brush Script MT",cursive; font-size:clamp(1.45rem,2vw,2rem); font-weight:500; letter-spacing:.015em; line-height:1; white-space:nowrap; text-shadow:0 1px 8px #0005; }
+.logo-imza { color:#fff; font-family:"Segoe Script","Brush Script MT",cursive; font-size:clamp(1.7rem,2.8vw,2.45rem); font-weight:400; font-style:italic; letter-spacing:.01em; line-height:1; white-space:nowrap; text-shadow:0 1px 8px #0005; }
 .koyu-bant { background:#c4121a !important; color:#fff !important; }
 .koyu-bant .kucuk,.koyu-bant h2,.koyu-bant p { color:#fff !important; }
 .koyu-bant .btn--acik { background:#fff !important; border-color:#fff !important; color:#111 !important; }

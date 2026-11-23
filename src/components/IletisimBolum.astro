@@ -5,7 +5,7 @@ import { telLink, waLink } from '../lib/yardimci';
 interface Props { baslikSeviye?: 'h1' | 'h2'; }
 const { baslikSeviye = 'h2' } = Astro.props;
 const Baslik = baslikSeviye;
-const harita = `https://maps.google.com/maps?q=${encodeURIComponent('Eskişehir, Türkiye')}&z=12&output=embed`;
+const harita = ayarlar.konum_linki;
 ---
 <div class="iletisim">
   <div>
@@ -18,6 +18,7 @@ const harita = `https://maps.google.com/maps?q=${encodeURIComponent('Eskişehir,
     <dl>
       <div><dt>Telefon</dt><dd><a href={telLink(ayarlar.telefon)}>{ayarlar.telefon}</a></dd></div>
       <div><dt>E-posta</dt><dd><a href={`mailto:${ayarlar.eposta}`}>{ayarlar.eposta}</a></dd></div>
+      <div><dt>Ofis adresi</dt><dd><a href={ayarlar.konum_linki} target="_blank" rel="noopener">Google Haritalar’da konumu görüntüleyin</a></dd></div>
       <div><dt>Hizmet bölgeleri</dt><dd>{ayarlar.hizmet_bolgeleri}, {ayarlar.sehir}</dd></div>
       <div><dt>Çalışma saatleri</dt><dd>{ayarlar.calisma_saatleri}</dd></div>
     </dl>
@@ -28,6 +29,6 @@ const harita = `https://maps.google.com/maps?q=${encodeURIComponent('Eskişehir,
     </div>
   </div>
   <div class="harita">
-    <iframe src={harita} title="Eskişehir hizmet bölgesi haritası" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    <iframe src={harita} title="Ertuğrul Aydın Emlak ofis konumu" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
   </div>
 </div>
