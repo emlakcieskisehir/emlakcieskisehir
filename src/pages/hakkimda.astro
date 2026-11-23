@@ -5,6 +5,7 @@ import hakkimda from '../data/hakkimda.json';
 import { telLink, waLink } from '../lib/yardimci';
 import Ikon from '../components/Ikon.astro';
 const paragraflar = hakkimda.metin.split(/\n\s*\n/).map((p) => p.trim()).filter(Boolean);
+const belgeler = hakkimda.belgeler.filter((b) => !/örnek/i.test(b));
 const sema = { '@context': 'https://schema.org', '@type': 'Person', name: ayarlar.danisman_adi, jobTitle: ayarlar.unvan, worksFor: { '@id': new URL('/#ofis', Astro.site).href } };
 ---
 <Ana baslik={`Hakkımda: ${ayarlar.danisman_adi}, ${ayarlar.sehir} gayrimenkul danışmanı`} aciklama={hakkimda.kisa_metin} gorsel={hakkimda.foto} schema={sema}>
@@ -15,9 +16,8 @@ const sema = { '@context': 'https://schema.org', '@type': 'Person', name: ayarla
         <div class="yol"><a href="/">Ana sayfa</a> / Hakkımda</div>
         <h1>{hakkimda.baslik}</h1>
         {paragraflar.map((p, i) => <p class={i === 0 ? 'uzun' : ''}>{p}</p>)}
-        <h2 style="font-size:var(--t-l);margin-top:30px">Belgelerim</h2>
-        <ul class="belgeler">{hakkimda.belgeler.map((b) => <li>{b}</li>)}</ul>
-        <p class="soluk">Taşınmaz ticareti yetki belgesi no: {ayarlar.yetki_belge_no}</p>
+        {belgeler.length > 0 && <><h2 style="font-size:var(--t-l);margin-top:30px">Belgelerim</h2><ul class="belgeler">{belgeler.map((b) => <li>{b}</li>)}</ul></>}
+        {ayarlar.yetki_belge_no && !/^0+$/.test(ayarlar.yetki_belge_no) && <p class="soluk">Taşınmaz ticareti yetki belgesi no: {ayarlar.yetki_belge_no}</p>}
         <div class="butonlar">
           <a class="btn btn--koyu" href={telLink(ayarlar.telefon)}><Ikon ad="telefon" />{ayarlar.telefon}</a>
           <a class="btn btn--wa" href={waLink(ayarlar.whatsapp, 'Merhaba Ertuğrul Bey, web sitenizden ulaşıyorum.')} target="_blank" rel="noopener"><Ikon ad="whatsapp" />WhatsApp</a>

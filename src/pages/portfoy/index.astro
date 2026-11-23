@@ -9,6 +9,7 @@ const benzersiz = (k: string) => [...new Set(ilanlar.map((i: any) => i.data[k]).
 const tipler = benzersiz('tip');
 const ilceler = benzersiz('ilce');
 const odalar = benzersiz('oda');
+const emlakjetProfil = 'https://www.emlakjet.com/emlak-ofisleri/realty-world-life-gayrimenkul-1814191';
 ---
 <Ana baslik={`${ayarlar.sehir} satılık ve kiralık ilanlar`} aciklama={`${ayarlar.danisman_adi} güncel ilanları: ${ayarlar.sehir} ${ayarlar.hizmet_bolgeleri} bölgesinde satılık ve kiralık daire, villa, arsa, dükkan ve ofis ilanları.`}>
   <section class="sayfa-bas">
@@ -18,8 +19,9 @@ const odalar = benzersiz('oda');
       <p>Aradığınızı burada bulamazsanız arayın; yeni gelen ve henüz ilana çıkmamış evleri de söylerim.</p>
     </div>
   </section>
-  <section style="padding-bottom:110px">
+  <section class="portfoy-liste-bolum" style="padding-bottom:110px">
     <div class="wrap">
+      {ilanlar.length === 0 ? <div class="portfoy-bos"><img src="/uploads/eskisehir-odunpazari-evleri.jpg" alt="Odunpazarı’nın geleneksel evleri" /><div><span class="hap">Güncel portföy</span><h2>Ofisin yayındaki ilanları</h2><p>Fiyat ve müsaitlik bilgileri için Realty World Life Gayrimenkul’ün Emlakjet ilan sayfasına göz atın.</p><a class="btn btn--koyu" href={emlakjetProfil} target="_blank" rel="noopener">Ofisin tüm ilanlarını gör <span aria-hidden="true">↗</span></a></div></div> : <>
       <form class="filtre" id="filtre">
         <div><label for="d">Durum</label><select id="d" name="durum"><option value="">Tümü</option><option>Satılık</option><option>Kiralık</option></select></div>
         <div><label for="t">Tip</label><select id="t" name="tip"><option value="">Tümü</option>{tipler.map((x) => <option>{x}</option>)}</select></div>
@@ -34,12 +36,14 @@ const odalar = benzersiz('oda');
       </div>
       <p class="bos" id="bos" hidden>Bu filtrelerle eşleşen ilan yok. Filtreleri gevşetin ya da <a href="/iletisim/">ne aradığınızı bana yazın</a>.</p>
       {ayarlar.sahibinden_magaza && <p style="margin-top:36px"><a href={ayarlar.sahibinden_magaza} target="_blank" rel="noopener">Sahibinden mağazamdaki diğer ilanlar</a></p>}
+      </>}
     </div>
   </section>
 </Ana>
 
 <script>
-  const form = document.getElementById('filtre') as HTMLFormElement;
+  const form = document.getElementById('filtre') as HTMLFormElement | null;
+  if (form) {
   const kartlar = [...document.querySelectorAll<HTMLElement>('#liste .ilan')];
   const sayi = document.getElementById('sayi')!;
   const bos = document.getElementById('bos')!;
@@ -60,4 +64,5 @@ const odalar = benzersiz('oda');
   form.addEventListener('input', uygula);
   form.addEventListener('reset', () => setTimeout(uygula));
   uygula();
+  }
 </script>

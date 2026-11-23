@@ -5,16 +5,20 @@ import { telLink, waLink } from '../lib/yardimci';
 interface Props { baslikSeviye?: 'h1' | 'h2'; }
 const { baslikSeviye = 'h2' } = Astro.props;
 const Baslik = baslikSeviye;
-const harita = `https://maps.google.com/maps?q=${encodeURIComponent(ayarlar.adres)}&z=15&output=embed`;
+const harita = `https://maps.google.com/maps?q=${encodeURIComponent('Eskişehir, Türkiye')}&z=12&output=embed`;
 ---
 <div class="iletisim">
   <div>
+    <div class="iletisim-portre-kart">
+      <img src="/uploads/danisman-ertugrul-seffaf.png" alt="Ertuğrul Aydın, gayrimenkul danışmanı" loading="lazy" width="1080" height="1920" />
+      <span>Eskişehir’de emlak danışmanlığı</span>
+    </div>
     <Baslik>Ofise uğrayın ya da arayın</Baslik>
     <p class="soluk">Randevusuz da gelebilirsiniz, ama sahada olabileceğim için önceden aramanızı öneririm.</p>
     <dl>
       <div><dt>Telefon</dt><dd><a href={telLink(ayarlar.telefon)}>{ayarlar.telefon}</a></dd></div>
       <div><dt>E-posta</dt><dd><a href={`mailto:${ayarlar.eposta}`}>{ayarlar.eposta}</a></dd></div>
-      <div><dt>Adres</dt><dd>{ayarlar.adres}</dd></div>
+      <div><dt>Hizmet bölgeleri</dt><dd>{ayarlar.hizmet_bolgeleri}, {ayarlar.sehir}</dd></div>
       <div><dt>Çalışma saatleri</dt><dd>{ayarlar.calisma_saatleri}</dd></div>
     </dl>
     <div class="butonlar">
@@ -23,6 +27,6 @@ const harita = `https://maps.google.com/maps?q=${encodeURIComponent(ayarlar.adre
     </div>
   </div>
   <div class="harita">
-    <iframe src={harita} title="Ofisin haritadaki konumu" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    <iframe src={harita} title="Eskişehir hizmet bölgesi haritası" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
   </div>
 </div>

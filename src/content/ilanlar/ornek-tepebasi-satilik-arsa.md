@@ -13,7 +13,7 @@ kapak: /uploads/ornek-13.svg
 galeri:
   - /uploads/ornek-14.svg
 one_cikan: true
-aktif: true
+aktif: false
 tarih: 2026-11-05
 ---
 
