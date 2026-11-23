@@ -1,7 +1,11 @@
 {
-  "baslik": "Ben Ertuğrul Aydın",
-  "foto": "/uploads/realtor-stock-turkey.jpg",
-  "kisa_metin": "Eskişehirliyim ve yıllardır bu şehirde ev alıp satan insanlarla çalışıyorum. Bir evi satarken sahibine ne söylediysem alıcıya da aynısını söylerim; çoğu müşterim de beni bu yüzden tavsiye ediyor.",
-  "metin": "Eskişehirliyim ve yıllardır bu şehirde ev alıp satan insanlarla çalışıyorum. Tepebaşı ve Odunpazarı'nın mahallelerini, hangi sokağın kışın güneş aldığına kadar bilirim.\n\nBir evi satarken sahibine ne söylediysem alıcıya da aynısını söylerim. Fiyatı olduğundan yüksek gösterip ilanı aylarca bekletmem; doğru fiyatı baştan konuşuruz.\n\nBu metni yönetim panelindeki \"Hakkımda\" bölümünden kendi hikayenizle değiştirebilirsiniz.",
-  "belgeler": ["Taşınmaz Ticareti Yetki Belgesi", "Örnek belge veya eğitim", "Örnek belge veya eğitim"]
+    "baslik":  "Ben Ertuğrul Aydın",
+    "foto":  "/uploads/danisman-ertugrul.jpg",
+    "kisa_metin":  "Eskişehirliyim ve yıllardır bu şehirde ev alıp satan insanlarla çalışıyorum. Bir evi satarken sahibine ne söylediysem alıcıya da aynısını söylerim; çoğu müşterim de beni bu yüzden tavsiye ediyor.",
+    "metin":  "Eskişehirliyim ve yıllardır bu şehirde ev alıp satan insanlarla çalışıyorum. Tepebaşı ve Odunpazarı\u0027nın mahallelerini, hangi sokağın kışın güneş aldığına kadar bilirim.\n\nBir evi satarken sahibine ne söylediysem alıcıya da aynısını söylerim. Fiyatı olduğundan yüksek gösterip ilanı aylarca bekletmem; doğru fiyatı baştan konuşuruz.",
+    "belgeler":  [
+                     "Taşınmaz Ticareti Yetki Belgesi",
+                     "Örnek belge veya eğitim",
+                     "Örnek belge veya eğitim"
+                 ]
 }

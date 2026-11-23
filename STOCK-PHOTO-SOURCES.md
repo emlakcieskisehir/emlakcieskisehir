@@ -1,11 +1,15 @@
-﻿Stock image sources
+Eskişehir image credits
 
-Portrait: “business meeting” by Halid Elosman, photographed in Istanbul, Türkiye.
-Pexels: https://www.pexels.com/photo/business-meeting-28186645/
-Pexels license: https://www.pexels.com/license/
+Porsuk Çayı in central Eskişehir
+Photo: Raicem
+Source: https://commons.wikimedia.org/wiki/File:Eskişehir_Porsuk_Çayı.jpg
+License: Creative Commons Attribution-ShareAlike 4.0 (CC BY-SA 4.0)
+License link: https://creativecommons.org/licenses/by-sa/4.0/
 
-Hero home: “A House at Sunset” by Chris F.
-Pexels: https://www.pexels.com/photo/a-house-at-sunset-9173032/
-Pexels license: https://www.pexels.com/license/
+Traditional Odunpazarı houses, Eskişehir
+Photo: Serragok
+Source: https://commons.wikimedia.org/wiki/File:Traditional_Odunpazarı_houses,_Eskişehir.jpg
+License: Creative Commons Attribution-ShareAlike 4.0 (CC BY-SA 4.0)
+License link: https://creativecommons.org/licenses/by-sa/4.0/
 
-The portrait is representative stock imagery and does not identify Ertuğrul Aydın.
+Profile photograph: supplied by the website owner.

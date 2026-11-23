@@ -13,6 +13,7 @@ import { telLink, waLink } from '../lib/yardimci';
 const ilanlar = await aktifIlanlar();
 const secili = ilanlar.filter((i) => i.data.one_cikan);
 const vitrin = (secili.length ? secili : ilanlar).slice(0, 3);
+const emlakjetProfil = 'https://www.emlakjet.com/emlak-ofisleri/realty-world-life-gayrimenkul-1814191';
 const rehberler = (await rehberListesi()).slice(0, 3);
 const yorumlar = (yorumData.yorumlar ?? []).filter((y) => !/örnek|değiştirin|gelecek/i.test(`${y.isim} ${y.metin}`));
 const sssSema = {
@@ -20,7 +21,7 @@ const sssSema = {
   '@type': 'FAQPage',
   mainEntity: anasayfa.sss.map((s) => ({ '@type': 'Question', name: s.soru, acceptedAnswer: { '@type': 'Answer', text: s.cevap } })),
 };
-const portre = '/uploads/realtor-stock-turkey.jpg';
+const portre = '/uploads/danisman-ertugrul.jpg';
 ---
 <Ana baslik={`${ayarlar.danisman_adi} – ${ayarlar.sehir} emlak, satılık ve kiralık evler`} schema={sssSema}>
   <section class="hero">
@@ -36,14 +37,14 @@ const portre = '/uploads/realtor-stock-turkey.jpg';
           </div>
         </div>
         <div class="hero-alt-bilgi">
-          <div class="rakamlar">
-            {anasayfa.rakamlar.map((r) => <div class="rakam"><strong><sup>+</sup>{r.deger}</strong><span>{r.etiket}</span></div>)}
+          <div class="hero-servis-tags">
+            <span>Tepebaşı</span><span>Odunpazarı</span><span>Alım · Satım · Kiralama</span>
           </div>
           <a class="asagi" href="#ilanlar">Öne çıkan ilanlar ↓</a>
         </div>
       </div>
       <div class="hero-portre">
-        <img src={portre} alt="Temsili emlak danışmanı portresi" width="560" height="700" fetchpriority="high" />
+        <img src={portre} alt="Ertuğrul Aydın, gayrimenkul danışmanı" width="560" height="700" fetchpriority="high" />
       </div>
     </div>
   </section>
@@ -58,14 +59,14 @@ const portre = '/uploads/realtor-stock-turkey.jpg';
       </div>
       <div class="kart-istatistik">
         <span class="kart-ikon" aria-hidden="true"><Ikon ad="saat" /></span>
-        <div class="buyuk">{anasayfa.istatistik.deger}</div>
-        <small>{anasayfa.istatistik.aciklama}</small>
-        <img src="/uploads/hero-sunset.jpg" alt="Gün batımında çağdaş bir konut" loading="lazy" width="800" height="600" />
+        <div class="buyuk">{ayarlar.sehir}</div>
+        <small>Alım, satım ve kiralama için yerel danışmanlık</small>
+        <img src="/uploads/eskisehir-porsuk.jpg" alt="Eskişehir merkezinde Porsuk Çayı" loading="lazy" width="800" height="600" />
       </div>
       <ul class="madde-liste">
-        <li><span><strong>{anasayfa.rakamlar[0]?.deger}+</strong> yıllık yerel piyasa deneyimi</span></li>
-        <li><span><strong>{anasayfa.rakamlar[1]?.deger}+</strong> satılan ve kiralanan konut</span></li>
-        <li><span><strong>2</strong> ana hizmet bölgesi: Tepebaşı ve Odunpazarı</span></li>
+        <li><span><strong>01</strong> Tepebaşı’nda mahalle odaklı danışmanlık</span></li>
+        <li><span><strong>02</strong> Odunpazarı’nda yerel piyasa bilgisi</span></li>
+        <li><span><strong>03</strong> Alım, satım ve kiralama desteği</span></li>
       </ul>
     </div>
   </section>
@@ -73,12 +74,23 @@ const portre = '/uploads/realtor-stock-turkey.jpg';
   <section class="blok" id="ilanlar">
     <div class="wrap">
       <div class="blok-ust">
-        <div><span class="hap">Portföy</span><h2>Güncel ilanlar</h2></div>
-        <a class="alti-cizili" href="/portfoy/">Tüm ilanlar ({ilanlar.length}) <span class="ok">↗</span></a>
+        <div><span class="hap">Portföy</span><h2>Ofisin güncel ilanları</h2></div>
+        <a class="alti-cizili" href={emlakjetProfil} target="_blank" rel="noopener">Ofisin tüm ilanlarını Emlakjet’te görün <span class="ok">↗</span></a>
       </div>
-      <div class="serit">
+      {vitrin.length > 0 ? <div class="serit">
         {vitrin.map((ilan) => <IlanKart ilan={ilan} />)}
+      </div> : <div class="ilan-kaynak-kart"><div><span class="hap">Güncel portföy</span><h3>Ofisin yayındaki ilanlarını görüntüleyin</h3><p>Fiyat ve müsaitlik bilgileri Emlakjet’te güncel tutuluyor.</p></div><a class="btn btn--koyu" href={emlakjetProfil} target="_blank" rel="noopener">Ofis ilanlarını görüntüle <span aria-hidden="true">↗</span></a></div>}
+    </div>
+  </section>
+
+  <section class="eskisehir-bolum">
+    <div class="wrap">
+      <div class="blok-ust"><div><span class="hap">Şehrimiz</span><h2>Eskişehir’de yaşamın içinden</h2></div><p>Mahalleleri, ulaşımı ve günlük yaşamı tanıyarak doğru evi bulmanıza yardımcı oluyorum.</p></div>
+      <div class="eskisehir-galeri">
+        <figure><img src="/uploads/eskisehir-porsuk.jpg" alt="Eskişehir merkezinden Porsuk Çayı manzarası" loading="lazy" /><figcaption><strong>Porsuk kıyısı</strong><span>Şehir merkezinin canlı yaşamı</span></figcaption></figure>
+        <figure><img src="/uploads/eskisehir-odunpazari-evleri.jpg" alt="Odunpazarı’nın geleneksel renkli evleri" loading="lazy" /><figcaption><strong>Odunpazarı</strong><span>Tarihi sokaklar ve kendine özgü mahalle dokusu</span></figcaption></figure>
       </div>
+      <p class="foto-kredisi">Fotoğraflar: <a href="https://commons.wikimedia.org/wiki/File:Eski%C5%9Fehir_Porsuk_%C3%87ay%C4%B1.jpg" target="_blank" rel="noopener">Raicem</a> ve <a href="https://commons.wikimedia.org/wiki/File:Traditional_Odunpazar%C4%B1_houses,_Eski%C5%9Fehir.jpg" target="_blank" rel="noopener">Serragok</a> / Wikimedia Commons, <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">CC BY-SA 4.0</a>.</p>
     </div>
   </section>
 
@@ -173,7 +185,7 @@ const portre = '/uploads/realtor-stock-turkey.jpg';
   <section class="blok">
     <div class="wrap">
       <div class="faq-layout">
-      <div class="faq-intro"><span class="hap">Yardımcı bilgiler</span><h2>Sık sorulan sorular</h2><img src="/uploads/hero-sunset.jpg" alt="Gün batımında modern bir ev" loading="lazy" /><p>Alım, satım ve kiralama sürecinizle ilgili aklınıza takılanları yanıtlayalım.</p><a class="btn btn--koyu" href="/iletisim/">Bize ulaşın</a></div>
+      <div class="faq-intro"><span class="hap">Yardımcı bilgiler</span><h2>Sık sorulan sorular</h2><img src="/uploads/eskisehir-odunpazari-evleri.jpg" alt="Odunpazarı’ndan geleneksel evler" loading="lazy" /><p>Alım, satım ve kiralama sürecinizle ilgili aklınıza takılanları yanıtlayalım.</p><a class="btn btn--koyu" href="/iletisim/">Bize ulaşın</a></div>
       <div class="sss">
         {anasayfa.sss.map((s) => <details><summary>{s.soru}</summary><p>{s.cevap}</p></details>)}
       </div>

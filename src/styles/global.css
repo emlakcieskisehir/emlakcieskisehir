@@ -549,3 +549,45 @@ a:hover { color:var(--vurgu); }
   .ic-sayfa .blok { padding:54px 0; }
   .form { padding:22px 17px; }
 }
+
+/* Eskişehir'e özgü fotoğraflar ve canlı, yerel portföy alanları. */
+.hero { background-image:linear-gradient(90deg,rgba(12,12,13,.78) 0%,rgba(12,12,13,.45) 52%,rgba(12,12,13,.1) 100%),url('/uploads/eskisehir-porsuk.jpg'); background-position:center 58%; }
+.footer { background:linear-gradient(90deg,rgba(13,13,13,.94),rgba(13,13,13,.88)),url('/uploads/eskisehir-odunpazari-evleri.jpg') center 44%/cover no-repeat; }
+.proof-section .kart-istatistik img { object-position:center 48%; }
+.proof-section .madde-liste strong { color:var(--vurgu); }
+.ilan-kaynak-kart { display:flex; align-items:center; justify-content:space-between; gap:28px; padding:32px; background:#f5f5f3; border:1px solid #e3e3e0; border-left:5px solid var(--vurgu); border-radius:8px; }
+.ilan-kaynak-kart h3 { font-size:clamp(1.45rem,2.5vw,2.2rem); margin:10px 0; }
+.ilan-kaynak-kart p { color:#656565; margin:0; }
+.eskisehir-bolum { padding:82px 0 26px; background:#f7f7f5; }
+.eskisehir-bolum .blok-ust { display:grid; grid-template-columns:1fr 1fr; gap:30px; }
+.eskisehir-bolum .blok-ust > p { margin:0 0 7px auto; }
+.eskisehir-galeri { display:grid; grid-template-columns:1.2fr .8fr; gap:18px; }
+.eskisehir-galeri figure { position:relative; min-height:310px; margin:0; overflow:hidden; border-radius:8px; background:#111; }
+.eskisehir-galeri figure:first-child { min-height:430px; }
+.eskisehir-galeri img { width:100%; height:100%; min-height:inherit; object-fit:cover; transition:transform .4s ease; }
+.eskisehir-galeri figure:hover img { transform:scale(1.035); }
+.eskisehir-galeri figcaption { position:absolute; right:14px; bottom:14px; left:14px; display:flex; flex-direction:column; padding:15px 18px; color:#fff; background:linear-gradient(90deg,#101010e8,#101010b0); border-radius:6px; }
+.eskisehir-galeri figcaption strong { font-size:1.2rem; }
+.eskisehir-galeri figcaption span { color:#e6e6e6; font-size:.9rem; }
+.foto-kredisi { margin:12px 0 0 auto; color:#777; font-size:.72rem; text-align:right; }
+.foto-kredisi a { text-decoration:underline; }
+.portfoy-liste-bolum { padding-top:52px; }
+.portfoy-bos { display:grid; grid-template-columns:1.1fr .9fr; gap:clamp(24px,5vw,64px); align-items:center; padding:28px; background:#f5f5f3; border:1px solid #e5e5e2; border-radius:10px; }
+.portfoy-bos img { width:100%; height:390px; object-fit:cover; border-radius:7px; }
+.portfoy-bos h2 { max-width:14ch; font-size:clamp(2rem,4vw,3.5rem); margin:14px 0; }
+.portfoy-bos p { color:#666; }
+.ic-sayfa .hakkimda > img { object-position:center 18%; }
+.ic-sayfa .iletisim-portre-kart img { object-position:center 20%; }
+.footer-alt > span:first-child { max-width:70ch; }
+.hero-servis-tags { display:flex; flex-wrap:wrap; gap:9px; }
+.hero-servis-tags span { padding:9px 14px; color:#fff; font-size:.84rem; border:1px solid #ffffff80; border-radius:999px; background:#17171760; backdrop-filter:blur(8px); }
+@media(max-width:640px) {
+  .ilan-kaynak-kart { align-items:stretch; flex-direction:column; padding:22px; }
+  .eskisehir-bolum { padding:60px 0 22px; }
+  .eskisehir-bolum .blok-ust { display:block; }
+  .eskisehir-galeri,.portfoy-bos { grid-template-columns:1fr; }
+  .eskisehir-galeri figure,.eskisehir-galeri figure:first-child { min-height:260px; }
+  .portfoy-bos { padding:17px; }
+  .portfoy-bos img { height:250px; }
+  .foto-kredisi { text-align:left; }
+}

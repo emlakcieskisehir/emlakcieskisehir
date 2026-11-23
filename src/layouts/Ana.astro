@@ -14,7 +14,7 @@ interface Props {
 const { baslik, aciklama = ayarlar.seo_aciklama, gorsel, schema, noindex = false } = Astro.props;
 const site = Astro.site!;
 const kanonik = new URL(Astro.url.pathname, site).href;
-const ogGorsel = new URL(gorsel || '/uploads/hero.svg', site).href;
+const ogGorsel = new URL(gorsel || '/uploads/eskisehir-porsuk.jpg', site).href;
 const tamBaslik = baslik.includes(ayarlar.ofis_adi) ? baslik : `${baslik} | ${ayarlar.ofis_adi}`;
 const yol = Astro.url.pathname;
 
@@ -35,7 +35,7 @@ const ajans = {
   image: ogGorsel,
   telephone: ayarlar.telefon,
   email: ayarlar.eposta,
-  address: { '@type': 'PostalAddress', streetAddress: ayarlar.adres, addressLocality: ayarlar.sehir, addressCountry: 'TR' },
+  address: { '@type': 'PostalAddress', addressLocality: ayarlar.sehir, addressCountry: 'TR' },
   areaServed: ayarlar.hizmet_bolgeleri.split(',').map((b: string) => b.trim()).filter(Boolean),
   sameAs: [ayarlar.instagram, ayarlar.facebook, ayarlar.youtube, ayarlar.linkedin, ayarlar.sahibinden_magaza].filter(Boolean),
 };
@@ -66,7 +66,7 @@ const basHarf = ayarlar.danisman_adi.split(' ').map((k: string) => k.charAt(0)).
   <meta property="og:url" content={kanonik} />
   <meta property="og:image" content={ogGorsel} />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="theme-color" content="#ffffff" />
+  <meta name="theme-color" content="#111111" />
   <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
   <link rel="sitemap" href="/sitemap-index.xml" />
   
@@ -110,10 +110,10 @@ const basHarf = ayarlar.danisman_adi.split(' ').map((k: string) => k.charAt(0)).
         </div>
       </div>
       <div class="footer-alt">
-        <span>© {yil} {ayarlar.ofis_adi}. {ayarlar.adres}</span>
+        <span>© {yil} {ayarlar.ofis_adi}{ayarlar.adres && !ayarlar.adres.toLocaleLowerCase('tr-TR').includes('örnek') ? `. ${ayarlar.adres}` : ''}</span>
         <span>
           {sosyal.map((s) => <a href={s.link} target="_blank" rel="noopener">{s.ad.charAt(0).toUpperCase() + s.ad.slice(1)}</a>)}
-          {ayarlar.yetki_belge_no && <span>Yetki belgesi no: {ayarlar.yetki_belge_no}</span>}
+          {ayarlar.yetki_belge_no && !/^0+$/.test(ayarlar.yetki_belge_no) && <span>Yetki belgesi no: {ayarlar.yetki_belge_no}</span>}
           <a href="/kvkk/">KVKK</a>
         </span>
       </div>

@@ -18,7 +18,7 @@ kapak: /uploads/ornek-18.svg
 galeri:
   - /uploads/ornek-1.svg
 one_cikan: false
-aktif: true
+aktif: false
 tarih: 2026-10-28
 ---
 

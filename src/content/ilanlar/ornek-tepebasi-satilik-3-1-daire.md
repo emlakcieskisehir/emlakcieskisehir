@@ -22,7 +22,7 @@ galeri:
   - /uploads/ornek-3.svg
   - /uploads/ornek-4.svg
 one_cikan: true
-aktif: true
+aktif: false
 tarih: 2026-11-20
 ---
 
