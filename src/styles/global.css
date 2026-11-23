@@ -731,10 +731,26 @@ main .btn--koyu, main .btn--wa, .header-sag .alti-cizili, .durum { color:#fff !i
   max-width:none !important;
   min-width:0;
   display:flex;
-  justify-content:center;
+  justify-content:flex-end;
   align-items:flex-end;
   overflow:visible;
 }
+.hero-principal,
+.hero-kicker,
+.merhaba,
+.hero-alt,
+.hero-butonlar {
+  position:static !important;
+  float:none !important;
+  transform:none !important;
+}
+.hero-kicker,.merhaba,.hero-alt,.hero-butonlar { width:100%; }
+.hero { background-position:center top !important; }
+body:not(.ic-sayfa) .header {
+  top:0 !important;
+  background:#000 !important;
+}
+.hero-kicker,.hero-alt { display:none !important; }
 .hero-portre img {
   width:auto !important;
   height:min(650px,calc(100vh - 150px)) !important;
@@ -778,7 +794,7 @@ main .btn--koyu, main .btn--wa, .header-sag .alti-cizili, .durum { color:#fff !i
   .hero-portre img { height:min(520px,65vh) !important; }
 }
 @media(max-width:640px) {
-  .hero { padding:90px 0 0 !important; background-position:58% center !important; }
+  .hero { padding:90px 0 0 !important; background-position:center top !important; }
   .hero .wrap { grid-template-columns:minmax(0,1fr) !important; gap:0 !important; }
   .hero-sol { padding:30px 0 12px !important; }
   .hero-principal { max-width:none !important; }
