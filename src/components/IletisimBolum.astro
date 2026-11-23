@@ -24,6 +24,7 @@ const harita = `https://maps.google.com/maps?q=${encodeURIComponent('Eskişehir,
     <div class="butonlar">
       <a class="btn btn--wa" href={waLink(ayarlar.whatsapp, 'Merhaba Ertuğrul Bey, web sitenizden ulaşıyorum.')} target="_blank" rel="noopener"><Ikon ad="whatsapp" />WhatsApp üzerinden yazın</a>
       <a class="btn btn--cizgi" href={telLink(ayarlar.telefon)}><Ikon ad="telefon" />Telefonla arayın</a>
+      {ayarlar.konum_linki && <a class="btn btn--cizgi" href={ayarlar.konum_linki} target="_blank" rel="noopener">Haritada yol tarifi alın</a>}
     </div>
   </div>
   <div class="harita">

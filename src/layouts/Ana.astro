@@ -77,7 +77,7 @@ const basHarf = ayarlar.danisman_adi.split(' ').map((k: string) => k.charAt(0)).
     <div class="wrap">
       <a href="/" class="logo" aria-label={`${ayarlar.ofis_adi}, ana sayfa`}>
         {ayarlar.logo ? <img src={ayarlar.logo} alt={ayarlar.ofis_adi} /> : (
-          <><span class="logo-isaret" aria-hidden="true">{basHarf}</span><span>{ayarlar.danisman_adi}</span></>
+          <span class="logo-imza">{ayarlar.danisman_adi}</span>
         )}
       </a>
       <nav class="nav" id="nav" aria-label="Ana menü">
@@ -110,11 +110,11 @@ const basHarf = ayarlar.danisman_adi.split(' ').map((k: string) => k.charAt(0)).
         </div>
       </div>
       <div class="footer-alt">
-        <span>© {yil} {ayarlar.ofis_adi}{ayarlar.adres && !ayarlar.adres.toLocaleLowerCase('tr-TR').includes('örnek') ? `. ${ayarlar.adres}` : ''}</span>
+        <span>© {yil} {ayarlar.ofis_adi}</span>
         <span>
+          {ayarlar.konum_linki && <a href={ayarlar.konum_linki} target="_blank" rel="noopener">Ofis konumu</a>}
           {sosyal.map((s) => <a href={s.link} target="_blank" rel="noopener">{s.ad.charAt(0).toUpperCase() + s.ad.slice(1)}</a>)}
           {ayarlar.yetki_belge_no && !/^0+$/.test(ayarlar.yetki_belge_no) && <span>Yetki belgesi no: {ayarlar.yetki_belge_no}</span>}
-          <a href="/kvkk/">KVKK</a>
         </span>
       </div>
     </div>

@@ -29,7 +29,7 @@ const portre = '/uploads/danisman-ertugrul-seffaf.png';
       <div class="hero-sol">
         <div class="hero-principal">
           <h1 class="merhaba">Evinizi değerinde satıyoruz</h1>
-          <p class="hero-ozet">10 yılı aşkın deneyim, yüzlerce memnun müşteri ve 300’den fazla güncel ilanla Eskişehir’de yanınızdayım.</p>
+          <p class="hero-ozet">10 yılı aşkın deneyim, 100’den fazla memnun müşteri ve 300’den fazla güncel ilanla Eskişehir’de yanınızdayım.</p>
           <div class="hero-butonlar">
             <a class="btn btn--koyu hero-call" href={telLink(ayarlar.telefon)}><span>Hemen arayın</span><small>{ayarlar.telefon}</small></a>
             <a class="btn btn--cizgi" href="/portfoy/">İlanları keşfedin</a>
@@ -69,6 +69,17 @@ const portre = '/uploads/danisman-ertugrul-seffaf.png';
     </div>
   </section>
 
+  <section class="blok" style="padding-bottom:24px">
+    <div class="wrap">
+      <div class="koyu-bant">
+        <div class="kucuk">Ücretsiz değerleme</div>
+        <h2>Eviniz bugün kaç para eder?</h2>
+        <p>Gayrimenkulünüzün değerini güncel piyasa verileri ve bölgedeki benzer ilanlar doğrultusunda değerlendirelim.</p>
+        <a class="btn btn--acik" href="/satmak-istiyorum/#form">Değerleme talep edin <span aria-hidden="true">↗</span></a>
+      </div>
+    </div>
+  </section>
+
   <section class="blok" id="ilanlar">
     <div class="wrap">
       <div class="blok-ust">
@@ -77,7 +88,7 @@ const portre = '/uploads/danisman-ertugrul-seffaf.png';
       </div>
       {vitrin.length > 0 ? <div class="serit">
         {vitrin.map((ilan) => <IlanKart ilan={ilan} />)}
-      </div> : <div class="ilan-kaynak-kart"><div><span class="hap">Güncel portföy</span><h3>Ofisin yayındaki ilanlarını görüntüleyin</h3><p>Fiyat ve müsaitlik bilgileri Emlakjet’te güncel tutuluyor.</p></div><a class="btn btn--koyu" href={emlakjetProfil} target="_blank" rel="noopener">Ofis ilanlarını görüntüle <span aria-hidden="true">↗</span></a></div>}
+      </div> : <div class="ilan-kaynak-kart"><div><span class="hap">Güncel portföy</span><h3>Ofisin yayındaki ilanlarını görüntüleyin</h3><p>Fiyat ve müsaitlik bilgileri Emlakjet’te güncel tutuluyor.</p></div><a class="btn btn--koyu" href={emlakjetProfil} target="_blank" rel="noopener">Tüm ilanları görüntüle <span aria-hidden="true">↗</span></a></div>}
     </div>
   </section>
 
@@ -105,17 +116,6 @@ const portre = '/uploads/danisman-ertugrul-seffaf.png';
             <div class="service-content"><p>{h.metin}</p><div class="rozetler">{(h.etiketler ?? []).map((e: string) => <span class="rozet">{e}</span>)}</div></div>
           </details>
         ))}
-      </div>
-    </div>
-  </section>
-
-  <section class="blok" style="padding-top:0">
-    <div class="wrap">
-      <div class="koyu-bant">
-        <div class="kucuk">Ücretsiz değerleme</div>
-        <h2>Eviniz bugün kaç para eder?</h2>
-        <p>Evinizi görüp aynı mahallede son aylarda satılan evlere göre bir fiyat aralığı söylüyorum. Ücret yok, sonrasında benimle çalışmak zorunda değilsiniz.</p>
-        <a class="btn btn--acik" href="/satmak-istiyorum/#form">Değerleme iste <span aria-hidden="true">↗</span></a>
       </div>
     </div>
   </section>
