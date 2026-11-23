@@ -746,6 +746,11 @@ main .btn--koyu, main .btn--wa, .header-sag .alti-cizili, .durum { color:#fff !i
 }
 .hero-kicker,.merhaba,.hero-alt,.hero-butonlar { width:100%; }
 .hero { background-position:center top !important; }
+body:not(.ic-sayfa) .header {
+  top:0 !important;
+  background:#000 !important;
+}
+.hero-kicker,.hero-alt { display:none !important; }
 .hero-portre img {
   width:auto !important;
   height:min(650px,calc(100vh - 150px)) !important;
