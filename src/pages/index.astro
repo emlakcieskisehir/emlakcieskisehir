@@ -25,12 +25,9 @@ const portre = hakkimda.foto?.includes('danisman.svg') ? '/uploads/portre.svg' :
 <Ana baslik={`${ayarlar.danisman_adi} – ${ayarlar.sehir} emlak, satılık ve kiralık evler`} schema={sssSema}>
   <section class="hero">
     <div class="wrap">
-      <span class="dikey" aria-hidden="true">{ayarlar.unvan}, {ayarlar.sehir}</span>
       <div class="hero-sol">
-        <div class="rakamlar">
-          {anasayfa.rakamlar.map((r) => <div class="rakam"><strong><sup>+</sup>{r.deger}</strong><span>{r.etiket}</span></div>)}
-        </div>
-        <div>
+        <div class="hero-principal">
+          <p class="hero-kicker">{ayarlar.unvan} <span aria-hidden="true">/</span> {ayarlar.sehir}</p>
           <h1 class="merhaba">{anasayfa.hero_baslik}</h1>
           <p class="hero-alt">{anasayfa.hero_metin}</p>
           <div class="hero-butonlar">
@@ -38,7 +35,12 @@ const portre = hakkimda.foto?.includes('danisman.svg') ? '/uploads/portre.svg' :
             <a class="btn btn--cizgi" href="/portfoy/">İlanlara bak</a>
           </div>
         </div>
-        <a class="asagi" href="#ilanlar">Aşağı kaydırın ↓</a>
+        <div class="hero-alt-bilgi">
+          <div class="rakamlar">
+            {anasayfa.rakamlar.map((r) => <div class="rakam"><strong><sup>+</sup>{r.deger}</strong><span>{r.etiket}</span></div>)}
+          </div>
+          <a class="asagi" href="#ilanlar">Aşağı kaydırın ↓</a>
+        </div>
       </div>
       <div class="hero-portre">
         <img src={portre} alt={ayarlar.danisman_adi} width="560" height="700" fetchpriority="high" />
