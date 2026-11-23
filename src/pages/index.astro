@@ -29,6 +29,7 @@ const portre = '/uploads/danisman-ertugrul-seffaf.png';
       <div class="hero-sol">
         <div class="hero-principal">
           <h1 class="merhaba">Evinizi değerinde satıyoruz</h1>
+          <p class="hero-ozet">10 yılı aşkın deneyim, yüzlerce memnun müşteri ve 300’den fazla güncel ilanla Eskişehir’de yanınızdayım.</p>
           <div class="hero-butonlar">
             <a class="btn btn--koyu hero-call" href={telLink(ayarlar.telefon)}><span>Hemen arayın</span><small>{ayarlar.telefon}</small></a>
             <a class="btn btn--cizgi" href="/portfoy/">İlanları keşfedin</a>
@@ -53,6 +54,7 @@ const portre = '/uploads/danisman-ertugrul-seffaf.png';
         <span class="hap">Hakkımda</span>
         <h2>{anasayfa.hakkinda_baslik}</h2>
         <p>{hakkimda.kisa_metin}</p>
+        <div class="ana-metrikler">{anasayfa.rakamlar.map((r) => <div><strong>{r.deger}</strong><span>{r.etiket}</span></div>)}</div>
         <a class="alti-cizili" href="/hakkimda/">Beni tanıyın <span class="ok">↗</span></a>
       </div>
       <div class="kart-istatistik">
@@ -93,8 +95,8 @@ const portre = '/uploads/danisman-ertugrul-seffaf.png';
   <section class="blok service-section" style="padding-top:0">
     <div class="wrap">
       <div class="blok-ust">
-        <div><span class="hap">Hizmetler</span><h2>Neler yapıyorum</h2></div>
-        <p>İşlem gerçekleşmeden hizmet bedeli almıyorum. Oranı ilk görüşmede yazılı olarak konuşuyoruz.</p>
+        <div><span class="hap">Hizmetler</span><h2>Gayrimenkul danışmanlığı hizmetlerim</h2></div>
+        <p>Her adımda şeffaf iletişim, güncel piyasa bilgisi ve ihtiyaçlarınıza uygun danışmanlık.</p>
       </div>
       <div class="service-list">
         {anasayfa.hizmetler.map((h, i) => (
@@ -120,7 +122,7 @@ const portre = '/uploads/danisman-ertugrul-seffaf.png';
 
   <section class="blok" style="padding-top:20px">
     <div class="wrap">
-      <div class="blok-ust"><div><span class="hap">Süreç</span><h2>Evinizi satarken neler oluyor</h2></div></div>
+      <div class="blok-ust"><div><span class="hap">Süreç</span><h2>Satış süreciniz, adım adım</h2></div></div>
       <ol class="surec">
         {anasayfa.surec.map((s) => <li><h3>{s.baslik}</h3><p>{s.metin}</p></li>)}
       </ol>
@@ -149,7 +151,7 @@ const portre = '/uploads/danisman-ertugrul-seffaf.png';
   <section class="blok">
     <div class="wrap">
       <div class="blok-ust">
-        <div><span class="hap">Bölgeler</span><h2>Çalıştığım mahalleler</h2></div>
+          <div><span class="hap">Bölgeler</span><h2>Hizmet verdiğim mahalleler</h2></div>
         <p>Listede olmayan bir mahalledeyseniz de arayın, {ayarlar.sehir}'in her yerine gidiyorum.</p>
       </div>
       <div class="mahalleler">
@@ -168,7 +170,7 @@ const portre = '/uploads/danisman-ertugrul-seffaf.png';
       <div class="wrap">
         <div class="blok-ust ortada" style="display:block">
           <span class="hap">Rehberler</span>
-          <h2>Ev alıp satarken bilmeniz gerekenler</h2>
+          <h2>Gayrimenkul kararlarınız için rehberler</h2>
         </div>
         <div class="rehber-grid">
           {rehberler.map((r) => <RehberKart rehber={r} />)}

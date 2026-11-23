@@ -13,8 +13,8 @@ const harita = `https://maps.google.com/maps?q=${encodeURIComponent('Eskişehir,
       <img src="/uploads/danisman-ertugrul-seffaf.png" alt="Ertuğrul Aydın, gayrimenkul danışmanı" loading="lazy" width="1080" height="1920" />
       <span>Eskişehir’de emlak danışmanlığı</span>
     </div>
-    <Baslik>Ofise uğrayın ya da arayın</Baslik>
-    <p class="soluk">Randevusuz da gelebilirsiniz, ama sahada olabileceğim için önceden aramanızı öneririm.</p>
+    <Baslik>İletişime geçin</Baslik>
+    <p class="soluk">Gayrimenkulünüz veya arayışınız hakkında görüşmek için telefon, e-posta ya da WhatsApp üzerinden ulaşabilirsiniz. Ofis ziyareti için önceden randevu almanızı öneririm.</p>
     <dl>
       <div><dt>Telefon</dt><dd><a href={telLink(ayarlar.telefon)}>{ayarlar.telefon}</a></dd></div>
       <div><dt>E-posta</dt><dd><a href={`mailto:${ayarlar.eposta}`}>{ayarlar.eposta}</a></dd></div>
@@ -22,8 +22,8 @@ const harita = `https://maps.google.com/maps?q=${encodeURIComponent('Eskişehir,
       <div><dt>Çalışma saatleri</dt><dd>{ayarlar.calisma_saatleri}</dd></div>
     </dl>
     <div class="butonlar">
-      <a class="btn btn--wa" href={waLink(ayarlar.whatsapp, 'Merhaba Ertuğrul Bey, web sitenizden ulaşıyorum.')} target="_blank" rel="noopener"><Ikon ad="whatsapp" />WhatsApp'tan yaz</a>
-      <a class="btn btn--cizgi" href={telLink(ayarlar.telefon)}><Ikon ad="telefon" />Ara</a>
+      <a class="btn btn--wa" href={waLink(ayarlar.whatsapp, 'Merhaba Ertuğrul Bey, web sitenizden ulaşıyorum.')} target="_blank" rel="noopener"><Ikon ad="whatsapp" />WhatsApp üzerinden yazın</a>
+      <a class="btn btn--cizgi" href={telLink(ayarlar.telefon)}><Ikon ad="telefon" />Telefonla arayın</a>
     </div>
   </div>
   <div class="harita">

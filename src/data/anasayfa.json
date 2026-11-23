@@ -1,10 +1,10 @@
 {
   "hero_baslik": "Merhaba",
-  "hero_metin": "Ben Ertuğrul. Eskişehir'de ev satmak, kiraya vermek ya da yeni bir ev bulmak isteyenlerle çalışıyorum.",
+  "hero_metin": "Eskişehir’de gayrimenkul alım, satım ve kiralama süreçlerinde deneyim, şeffaflık ve güncel piyasa bilgisiyle yanınızdayım.",
   "hizmetler": [
     {
       "baslik": "Ev satışı",
-      "metin": "Fiyatı birlikte belirliyoruz, fotoğrafları çekip ilanı ben hazırlıyorum, gelen alıcılarla ben görüşüyorum.",
+      "metin": "Güncel piyasa verilerine dayalı fiyat analizi hazırlıyor; tanıtım, alıcı görüşmeleri ve satış sürecini başından sonuna kadar yönetiyorum.",
       "kimin_icin": "Satıcılar için",
       "etiketler": [
         "Fiyat analizi",
@@ -14,7 +14,7 @@
     },
     {
       "baslik": "Kiralama",
-      "metin": "Kiracı adaylarıyla görüşüp referanslarını kontrol ediyorum. Sözleşme ve teslim günü yanınızdayım.",
+      "metin": "Kiracı adaylarının değerlendirilmesinden sözleşme ve teslim aşamasına kadar süreci şeffaf biçimde yürütüyorum.",
       "kimin_icin": "Ev sahipleri için",
       "etiketler": [
         "Kiracı seçimi",
@@ -23,7 +23,7 @@
     },
     {
       "baslik": "Ücretsiz değerleme",
-      "metin": "Satmayı düşünmüyor olsanız da evinizin bugünkü değerini öğrenebilirsiniz.",
+      "metin": "Gayrimenkulünüzün güncel piyasa değerini bölge verileri ve benzer işlemler doğrultusunda değerlendiriyorum.",
       "kimin_icin": "Herkes için",
       "etiketler": [
         "Ücretsiz",
@@ -32,7 +32,7 @@
     },
     {
       "baslik": "Ev arayanlara",
-      "metin": "Ne aradığınızı söyleyin; portföyümde yoksa çevremdeki ilanlardan uygun olanları sizin için ayıklarım.",
+      "metin": "İhtiyaçlarınızı ve bütçenizi dikkate alarak uygun konut ve iş yeri seçeneklerini belirlemenize yardımcı oluyorum.",
       "kimin_icin": "Alıcılar ve kiracılar için",
       "etiketler": [
         "Portföy",
@@ -41,7 +41,7 @@
     },
     {
       "baslik": "Dükkan, ofis ve arsa",
-      "metin": "Ticari mülklerde kira getirisi ve imar durumunu baştan konuşuyoruz.",
+      "metin": "Ticari gayrimenkul ve arsa süreçlerinde kullanım amacı, konum ve piyasa koşullarını birlikte değerlendiriyoruz.",
       "kimin_icin": "Yatırımcılar için",
       "etiketler": [
         "Kira getirisi",
@@ -52,19 +52,19 @@
   "surec": [
     {
       "baslik": "Evinizi görüyorum",
-      "metin": "Ne zaman ve hangi şartlarla satmak istediğinizi konuşuyoruz."
+      "metin": "Önceliklerinizi, zaman planınızı ve satış ya da kiralama koşullarınızı netleştiriyoruz."
     },
     {
       "baslik": "Fiyatı belirliyoruz",
-      "metin": "Aynı sokaktaki ve mahalledeki son satışlara bakıyoruz."
+      "metin": "Bölgedeki güncel verileri ve benzer gayrimenkulleri inceleyerek gerçekçi bir fiyat stratejisi oluşturuyoruz."
     },
     {
       "baslik": "İlana çıkıyoruz",
-      "metin": "Fotoğraf, ilan metni, sahibinden ve sosyal medya benden."
+      "metin": "Nitelikli görseller ve kapsamlı ilan bilgileriyle gayrimenkulünüzü doğru kitleye tanıtıyoruz."
     },
     {
       "baslik": "Tapuya kadar takip",
-      "metin": "Alıcı görüşmeleri, pazarlık, kredi ve tapu randevusu."
+      "metin": "Aday görüşmelerinden teklif ve tapu işlemlerine kadar her aşamayı takip ediyor, sizi düzenli bilgilendiriyorum."
     }
   ],
   "mahalleler": [
@@ -80,34 +80,29 @@
   "sss": [
     {
       "soru": "Değerleme için ücret alıyor musunuz?",
-      "cevap": "Hayır. Evinizi görüp size bir fiyat aralığı söylüyorum. Sonrasında benimle çalışmak zorunda değilsiniz."
+      "cevap": "Hayır. Gayrimenkulünüzü ve güncel piyasa verilerini inceleyerek size bir değer aralığı sunuyorum. Değerleme sonrasında hizmet alma zorunluluğunuz bulunmuyor."
     },
     {
       "soru": "Hizmet bedeli ne kadar, ne zaman ödeniyor?",
-      "cevap": "Hizmet bedeli yasal oranlar içinde, yalnızca satış ya da kiralama gerçekleştiğinde ödenir. Oranı ilk görüşmede yazılı olarak konuşuyoruz."
+      "cevap": "Hizmet bedelini yürürlükteki mevzuata uygun şekilde, iş birliğine başlamadan önce yazılı olarak netleştiriyoruz."
     },
     {
       "soru": "Evim ne kadar sürede satılır?",
-      "cevap": "Doğru fiyatlanmış bir ev, mahalleye ve piyasaya göre genellikle birkaç hafta ile birkaç ay arasında satılıyor."
+      "cevap": "Satış süresi; fiyat, konum, mülkün özellikleri ve piyasa koşullarına göre değişir. Doğru fiyatlandırma ve etkili tanıtım sürecin verimli ilerlemesine yardımcı olur."
     },
     {
       "soru": "Eskişehir dışında yaşıyorum, satış yapabilir miyiz?",
-      "cevap": "Evet. Vekaletle süreci sizin adınıza yürütüyorum ve her adımda fotoğraf ve mesajla bilgi veriyorum."
+      "cevap": "Evet. Gerekli yetkilendirme ve belgeler tamamlandığında süreci uzaktan takip edebilir, her aşamada sizi bilgilendirebilirim."
     }
   ],
   "rakamlar": [
-    {
-      "deger": "10",
-      "etiket": "yıllık deneyim"
-    },
-    {
-      "deger": "300",
-      "etiket": "satılan ve kiralanan ev"
-    }
+    { "deger": "10+", "etiket": "yılı aşkın deneyim" },
+    { "deger": "Yüzlerce", "etiket": "memnun müşteri" },
+    { "deger": "300+", "etiket": "güncel ilan" }
   ],
   "istatistik": {
-    "deger": "6 hafta",
-    "aciklama": "Doğru fiyatlanan bir evin ortalama satış süresi"
+    "deger": "2 yıl",
+    "aciklama": "Emlak Yönetimi eğitimi"
   },
-  "hakkinda_baslik": "Eskişehir'i sokak sokak bilen bir emlakçı"
+  "hakkinda_baslik": "Deneyim, eğitim ve güvenilir danışmanlık"
 }

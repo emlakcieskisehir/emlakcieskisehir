@@ -20,7 +20,7 @@ const yol = Astro.url.pathname;
 
 const menu = [
   { ad: 'İlanlar', link: '/portfoy/' },
-  { ad: 'Evimi satmak istiyorum', link: '/satmak-istiyorum/' },
+  { ad: 'Satış danışmanlığı', link: '/satmak-istiyorum/' },
   { ad: 'Rehberler', link: '/rehberler/' },
   { ad: 'Hakkımda', link: '/hakkimda/' },
   { ad: 'İletişim', link: '/iletisim/' },
@@ -98,7 +98,7 @@ const basHarf = ayarlar.danisman_adi.split(' ').map((k: string) => k.charAt(0)).
     <div class="wrap">
       <div class="footer-ust">
         <div>
-          <p style="margin:0 0 18px">Evinizi satmak, kiraya vermek ya da yeni bir ev bulmak için arayın.</p>
+          <p style="margin:0 0 18px">Gayrimenkul alım, satım ve kiralama süreçlerinizde profesyonel danışmanlık için iletişime geçin.</p>
           <nav class="footer-nav" aria-label="Alt menü">
             <a href="/">Ana sayfa</a>
             {menu.map((m) => <a href={m.link}>{m.ad}</a>)}
