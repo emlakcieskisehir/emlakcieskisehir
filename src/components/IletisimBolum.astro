@@ -16,7 +16,7 @@ const harita = `https://maps.google.com/maps?q=${encodeURIComponent('39.7653341,
     <Baslik>İletişime geçin</Baslik>
     <p class="soluk">Gayrimenkulünüz veya arayışınız hakkında görüşmek için telefon, e-posta ya da WhatsApp üzerinden ulaşabilirsiniz. Ofis ziyareti için önceden randevu almanızı öneririm.</p>
     <dl>
-      <div><dt>Telefon</dt><dd><span class="telefon-adi">Ertuğrul Aydın</span><a href={telLink(ayarlar.telefon)}>{ayarlar.telefon}</a></dd></div>
+      <div><dt>Telefon</dt><dd><span class="telefon-grup"><span class="telefon-adi">Ertuğrul Aydın</span><a href={telLink(ayarlar.telefon)}>{ayarlar.telefon}</a></span></dd></div>
       <div><dt>E-posta</dt><dd><a href={`mailto:${ayarlar.eposta}`}>{ayarlar.eposta}</a></dd></div>
       <div><dt>Ofis adresi</dt><dd><a href={ayarlar.konum_linki} target="_blank" rel="noopener">REALTY WORLD LIFE GAYRİMENKUL, Eskişehir</a></dd></div>
       <div><dt>Hizmet bölgeleri</dt><dd>{ayarlar.hizmet_bolgeleri}, {ayarlar.sehir}</dd></div>
