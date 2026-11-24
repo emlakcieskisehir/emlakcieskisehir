@@ -774,14 +774,16 @@ body:not(.ic-sayfa) .header {
 .ana-metrikler strong { font-size:clamp(1.2rem,2vw,1.8rem); line-height:1.15; color:#111; }
 .ana-metrikler span { margin-top:5px; font-size:.86rem; color:#444; }
 .logo { gap:10px; }
-.logo-amblem { display:block; flex:0 0 36px; width:36px; height:36px; }
+.logo-amblem { display:block; flex:0 0 38px; width:38px; height:38px; }
 .logo-amblem svg { display:block; width:100%; height:100%; }
 .logo-amblem circle { fill:#c4121a; }
-.logo-amblem text { fill:#fff; font:600 25px Georgia,serif; letter-spacing:-3px; }
-.logo-yazi { display:flex; flex-direction:column; justify-content:center; align-items:flex-start; gap:1px; }
+.logo-amblem .ev-cati,.logo-amblem .ev-govde { fill:none; stroke:#fff; stroke-width:2.6; stroke-linecap:round; stroke-linejoin:round; }
+.logo-amblem .ev-kapi { fill:none; stroke:#fff; stroke-width:2.5; stroke-linejoin:round; }
+.logo-amblem .ev-pencere { fill:#fff; }
+.logo-yazi { display:flex; flex-direction:column; justify-content:center; align-items:flex-start; gap:6px; }
 .logo-imza-img { display:block; width:auto !important; height:21px !important; max-width:180px; object-fit:contain; filter:none !important; }
 .logo-unvan { display:block; color:#fff; font-size:9px; line-height:1.1; letter-spacing:.08em; text-transform:uppercase; }
-@media(max-width:640px) { .logo-amblem { flex-basis:32px; width:32px; height:32px; } .logo-imza-img { height:18px !important; max-width:155px; } .logo-unvan { font-size:8px; } }
+@media(max-width:640px) { .logo-amblem { flex-basis:34px; width:34px; height:34px; } .logo-imza-img { height:18px !important; max-width:155px; } .logo-yazi { gap:5px; } .logo-unvan { font-size:8px; } }
 .koyu-bant { background:#c4121a !important; color:#fff !important; }
 .koyu-bant .kucuk,.koyu-bant h2,.koyu-bant p { color:#fff !important; }
 .koyu-bant .btn--acik { background:#fff !important; border-color:#fff !important; color:#111 !important; }
