@@ -16,10 +16,11 @@ const ilanlar = defineCollection({
   loader: glob({ pattern: '**/*.md', base: './src/content/ilanlar' }),
   schema: z.object({
     baslik: z.string(),
-    durum: z.enum(['Satılık', 'Kiralık']),
+    durum: z.string(),
     tip: z.string().default('Daire'),
     fiyat: opsiyonelSayi,
     ilce: z.string(),
+    il: opsiyonelYazi,
     mahalle: opsiyonelYazi,
     oda: opsiyonelYazi,
     m2_brut: opsiyonelSayi,

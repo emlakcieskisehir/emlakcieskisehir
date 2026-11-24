@@ -13,10 +13,10 @@ export async function getStaticPaths() {
 }
 const { ilan, hepsi } = Astro.props;
 const d = ilan.data;
-const { Content } = await render(ilan);
+const Content = ilan.kaynak === 'emlakjet' ? null : (await render(ilan)).Content;
 const fotolar = [d.kapak, ...d.galeri].filter(Boolean) as string[];
 const url = new URL(Astro.url.pathname, Astro.site).href;
-const konum = [d.mahalle, d.ilce, ayarlar.sehir].filter(Boolean).join(', ');
+const konum = [d.mahalle, d.ilce, d.il || ayarlar.sehir].filter(Boolean).join(', ');
 const satirlar = [
   ['Durum', d.durum], ['Tip', d.tip], ['Oda', d.oda], ['Brüt m²', d.m2_brut && `${d.m2_brut} m²`], ['Net m²', d.m2_net && `${d.m2_net} m²`],
   ['Kat', d.kat], ['Bina yaşı', d.bina_yasi], ['Isıtma', d.isitma], ['İlan tarihi', tarihYaz(d.tarih)],
@@ -34,7 +34,7 @@ const sema = {
   datePosted: d.tarih.toISOString().slice(0, 10),
   image: fotolar.map((f) => new URL(f, Astro.site).href),
   offers: d.fiyat ? { '@type': 'Offer', price: d.fiyat, priceCurrency: 'TRY', businessFunction: d.durum === 'Kiralık' ? 'http://purl.org/goodrelations/v1#LeaseOut' : 'http://purl.org/goodrelations/v1#Sell' } : undefined,
-  address: { '@type': 'PostalAddress', addressLocality: d.ilce, addressRegion: ayarlar.sehir, addressCountry: 'TR' },
+  address: { '@type': 'PostalAddress', addressLocality: d.ilce, addressRegion: d.il || ayarlar.sehir, addressCountry: 'TR' },
 };
 ---
 <Ana baslik={baslikTemiz} aciklama={aciklama} gorsel={fotolar[0]} schema={sema}>
@@ -62,7 +62,7 @@ const sema = {
           <p class="soluk" style="margin:0">{konum}</p>
           {d.ozellikler.length > 0 && <ul class="ozellikler">{d.ozellikler.map((o) => <li>{o}</li>)}</ul>}
           <h2 style="font-size:var(--t-xl);margin-top:36px">Açıklama</h2>
-          <div class="metin"><Content /></div>
+          <div class="metin">{ilan.kaynak === 'emlakjet' ? <><p style="white-space:pre-line">{ilan.aciklama}</p><p class="kucuk-not">Fiyat ve ilan durumu değişebilir. Son bilgi için bizimle iletişime geçebilirsiniz.</p></> : Content && <Content />}</div>
         </div>
       </div>
       <aside class="detay-yan">
@@ -73,7 +73,7 @@ const sema = {
         </table>
         <a class="btn btn--wa btn--tam" href={waLink(ayarlar.whatsapp, waMesaj)} target="_blank" rel="noopener"><Ikon ad="whatsapp" />WhatsApp'tan bu ilanı sor</a>
         <a class="btn btn--koyu btn--tam telefon-grup" href={telLink(ayarlar.telefon)}><span class="telefon-adi">Ertuğrul Aydın</span><span><Ikon ad="telefon" />{ayarlar.telefon}</span></a>
-        {d.sahibinden && <a class="btn btn--cizgi btn--tam" href={d.sahibinden} target="_blank" rel="noopener">Sahibinden'deki ilanı aç</a>}
+        {d.sahibinden && <a class="btn btn--cizgi btn--tam" href={d.sahibinden} target="_blank" rel="noopener">{ilan.kaynak === 'emlakjet' ? 'Emlakjet’te orijinal ilanı gör' : 'İlan kaynağını aç'} ↗</a>}
         <button class="btn btn--cizgi btn--tam" id="paylas" data-url={url} data-baslik={baslikTemiz}><Ikon ad="paylas" />İlanı paylaş</button>
         <p class="kucuk-not">{ayarlar.ofis_adi}, yetki belgesi no: {ayarlar.yetki_belge_no}</p>
       </aside>

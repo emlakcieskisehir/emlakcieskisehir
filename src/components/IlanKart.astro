@@ -5,11 +5,11 @@ interface Props { ilan: any; }
 const { ilan } = Astro.props;
 const d = ilan.data;
 const m2 = d.m2_net || d.m2_brut;
-const bilgi = [[d.mahalle, d.ilce].filter(Boolean).join(', '), d.oda, m2 && `${m2} m²`].filter(Boolean).join(', ');
+const bilgi = [[d.mahalle, d.ilce, d.il || 'Eskişehir'].filter(Boolean).join(', '), d.oda, m2 && `${m2} m²`].filter(Boolean).join(', ');
 const [tutar, ek] = fiyatYaz(d.fiyat, d.durum).split(' / ');
 ---
 <a class="ilan" href={`/portfoy/${ilan.slug}/`}
-  data-durum={d.durum} data-tip={d.tip} data-ilce={d.ilce} data-oda={d.oda ?? ''} data-fiyat={d.fiyat ?? 0}>
+  data-durum={d.durum} data-tip={d.tip} data-il={d.il || 'Eskişehir'} data-ilce={d.ilce} data-oda={d.oda ?? ''} data-fiyat={d.fiyat ?? 0}>
   <div class="ilan-foto">
     {d.kapak && <img src={d.kapak} alt="" loading="lazy" width="480" height="600" />}
     <span class={`durum ${d.durum === 'Kiralık' ? 'durum--kiralik' : ''}`}>{d.durum}</span>

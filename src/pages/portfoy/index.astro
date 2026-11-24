@@ -7,24 +7,28 @@ import { aktifIlanlar } from '../../lib/icerik';
 const ilanlar = await aktifIlanlar();
 const benzersiz = (k: string) => [...new Set(ilanlar.map((i: any) => i.data[k]).filter(Boolean))].sort((a, b) => String(a).localeCompare(String(b), 'tr'));
 const tipler = benzersiz('tip');
+const iller = benzersiz('il');
 const ilceler = benzersiz('ilce');
 const odalar = benzersiz('oda');
+const durumlar = benzersiz('durum');
 const emlakjetProfil = 'https://www.emlakjet.com/emlak-ofisleri/realty-world-life-gayrimenkul-1814191';
 ---
-<Ana baslik={`${ayarlar.sehir} satılık ve kiralık ilanlar`} aciklama={`${ayarlar.danisman_adi} güncel ilanları: ${ayarlar.sehir} ${ayarlar.hizmet_bolgeleri} bölgesinde satılık ve kiralık daire, villa, arsa, dükkan ve ofis ilanları.`}>
+<Ana baslik="Ofis portföyü: güncel gayrimenkul ilanları" aciklama="Realty World Life Gayrimenkul ofisinin yayındaki satılık, kiralık ve devren ilanlarını inceleyin. İlçe, gayrimenkul türü ve fiyat filtrelerini kullanın.">
   <section class="sayfa-bas">
     <div class="wrap">
       <div class="yol"><a href="/">Ana sayfa</a> / İlanlar</div>
-      <h1>{ayarlar.sehir} satılık ve kiralık ilanlar</h1>
-      <p>Eskişehir’de satış ve kiralamadaki güncel portföyü inceleyin. Arayışınıza uygun seçenekler için bizimle iletişime geçebilirsiniz.</p>
+      <h1>Ofisimizin güncel portföyü</h1>
+      <p>Realty World Life Gayrimenkul ofisinin yayındaki satılık, kiralık ve devren ilanlarını inceleyin. Arayışınıza uygun seçenekler için bizimle iletişime geçebilirsiniz.</p>
+      <p class="kucuk-not">İlanlar 23 Kasım 2026 tarihinde elle aktarılmıştır; sonraki değişiklikler ayrıca güncellenmelidir.</p>
     </div>
   </section>
   <section class="portfoy-liste-bolum" style="padding-bottom:110px">
     <div class="wrap">
       {ilanlar.length === 0 ? <div class="portfoy-bos"><img src="/uploads/eskisehir-odunpazari-evleri.jpg" alt="Odunpazarı’nın geleneksel evleri" /><div><span class="hap">Güncel portföy</span><h2>Ofisin yayındaki ilanları</h2><p>Fiyat ve müsaitlik bilgileri için Realty World Life Gayrimenkul’ün Emlakjet ilan sayfasına göz atın.</p><a class="btn btn--koyu" href={emlakjetProfil} target="_blank" rel="noopener">Ofisin tüm ilanlarını gör <span aria-hidden="true">↗</span></a></div></div> : <>
       <form class="filtre" id="filtre">
-        <div><label for="d">Durum</label><select id="d" name="durum"><option value="">Tümü</option><option>Satılık</option><option>Kiralık</option></select></div>
+        <div><label for="d">Durum</label><select id="d" name="durum"><option value="">Tümü</option>{durumlar.map((x) => <option>{x}</option>)}</select></div>
         <div><label for="t">Tip</label><select id="t" name="tip"><option value="">Tümü</option>{tipler.map((x) => <option>{x}</option>)}</select></div>
+        <div><label for="il">Şehir</label><select id="il" name="il"><option value="">Tümü</option>{iller.map((x) => <option>{x}</option>)}</select></div>
         <div><label for="i">İlçe</label><select id="i" name="ilce"><option value="">Tümü</option>{ilceler.map((x) => <option>{x}</option>)}</select></div>
         <div><label for="o">Oda</label><select id="o" name="oda"><option value="">Tümü</option>{odalar.map((x) => <option>{x}</option>)}</select></div>
         <div><label for="f">En fazla fiyat, ₺</label><input id="f" name="fiyat" inputmode="numeric" placeholder="Örn: 5000000" /></div>
@@ -34,6 +38,7 @@ const emlakjetProfil = 'https://www.emlakjet.com/emlak-ofisleri/realty-world-lif
       <div class="ilanlar" id="liste">
         {ilanlar.map((ilan) => <IlanKart ilan={ilan} />)}
       </div>
+      <div class="ortada" style="margin-top:32px"><button class="btn btn--cizgi" type="button" id="daha-fazla">Daha fazla ilan göster</button></div>
       <p class="bos" id="bos" hidden>Bu filtrelerle eşleşen ilan yok. Filtreleri gevşetin ya da <a href="/iletisim/">ne aradığınızı bana yazın</a>.</p>
       {ayarlar.sahibinden_magaza && <p style="margin-top:36px"><a href={ayarlar.sahibinden_magaza} target="_blank" rel="noopener">Sahibinden mağazamdaki diğer ilanlar</a></p>}
       </>}
@@ -47,6 +52,8 @@ const emlakjetProfil = 'https://www.emlakjet.com/emlak-ofisleri/realty-world-lif
   const kartlar = [...document.querySelectorAll<HTMLElement>('#liste .ilan')];
   const sayi = document.getElementById('sayi')!;
   const bos = document.getElementById('bos')!;
+  const dahaFazla = document.getElementById('daha-fazla') as HTMLButtonElement;
+  let gosterimSiniri = 24;
   const p = new URLSearchParams(location.search);
   for (const [k, v] of p) { const el = form.elements.namedItem(k) as HTMLInputElement | null; if (el) el.value = v; }
   function uygula() {
@@ -55,14 +62,16 @@ const emlakjetProfil = 'https://www.emlakjet.com/emlak-ofisleri/realty-world-lif
     let n = 0;
     kartlar.forEach((k) => {
       const d = k.dataset;
-      const ok = (!f.durum || d.durum === f.durum) && (!f.tip || d.tip === f.tip) && (!f.ilce || d.ilce === f.ilce) && (!f.oda || d.oda === f.oda) && (Number(d.fiyat) <= maks);
-      k.hidden = !ok; if (ok) n++;
+      const ok = (!f.durum || d.durum === f.durum) && (!f.tip || d.tip === f.tip) && (!f.il || d.il === f.il) && (!f.ilce || d.ilce === f.ilce) && (!f.oda || d.oda === f.oda) && (Number(d.fiyat) <= maks);
+      if (ok) { n++; k.hidden = n > gosterimSiniri; } else { k.hidden = true; }
     });
-    sayi.textContent = `${n} ilan listeleniyor`;
+    sayi.textContent = `${n} ilan listeleniyor${n > gosterimSiniri ? ` · İlk ${gosterimSiniri} ilan gösteriliyor` : ''}`;
+    dahaFazla.hidden = n <= gosterimSiniri;
     bos.hidden = n > 0;
   }
   form.addEventListener('input', uygula);
   form.addEventListener('reset', () => setTimeout(uygula));
+  dahaFazla.addEventListener('click', () => { gosterimSiniri += 24; uygula(); });
   uygula();
   }
 </script>
