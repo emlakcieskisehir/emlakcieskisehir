@@ -90,7 +90,7 @@ const basHarf = ayarlar.danisman_adi.split(' ').map((k: string) => k.charAt(0)).
         {menu.map((m) => <a href={m.link} aria-current={yol.startsWith(m.link) ? 'page' : undefined}>{m.ad}</a>)}
       </nav>
       <div class="header-sag">
-        <a class="alti-cizili" href={telLink(ayarlar.telefon)}>{ayarlar.telefon}</a>
+        <a class="alti-cizili telefon-grup" href={telLink(ayarlar.telefon)}><span class="telefon-adi">Ertuğrul Aydın</span><span>{ayarlar.telefon}</span></a>
       </div>
       <button class="menu-btn" aria-label="Menüyü aç" aria-expanded="false" aria-controls="nav" id="menu-btn"><Ikon ad="menu" /></button>
     </div>
@@ -111,7 +111,7 @@ const basHarf = ayarlar.danisman_adi.split(' ').map((k: string) => k.charAt(0)).
           </nav>
         </div>
         <div style="text-align:right">
-          <a class="footer-buyuk" href={telLink(ayarlar.telefon)}>{ayarlar.telefon}</a>
+          <a class="footer-buyuk telefon-grup" href={telLink(ayarlar.telefon)}><span class="telefon-adi">Ertuğrul Aydın</span><span>{ayarlar.telefon}</span></a>
           <p style="margin:12px 0 0;margin-left:auto"><a href={`mailto:${ayarlar.eposta}`}>{ayarlar.eposta}</a></p>
         </div>
       </div>

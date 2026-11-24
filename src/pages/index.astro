@@ -31,7 +31,7 @@ const portre = '/uploads/danisman-ertugrul-seffaf.png';
           <h1 class="merhaba">Evinizi değerinde satıyoruz</h1>
           <p class="hero-ozet">10 yılı aşkın deneyim, 100’den fazla memnun müşteri ve 300’den fazla güncel ilanla Eskişehir’de yanınızdayım.</p>
           <div class="hero-butonlar">
-            <a class="btn btn--koyu hero-call" href={telLink(ayarlar.telefon)}><span>Hemen arayın</span><small>{ayarlar.telefon}</small></a>
+            <a class="btn btn--koyu hero-call" href={telLink(ayarlar.telefon)}><span class="telefon-adi">Ertuğrul Aydın</span><span>Hemen arayın</span><small>{ayarlar.telefon}</small></a>
             <a class="btn btn--cizgi" href="/portfoy/">İlanları keşfedin</a>
           </div>
         </div>
@@ -152,7 +152,7 @@ const portre = '/uploads/danisman-ertugrul-seffaf.png';
     <div class="wrap">
       <div class="blok-ust">
           <div><span class="hap">Bölgeler</span><h2>Hizmet verdiğim mahalleler</h2></div>
-        <p>Listede olmayan bir mahalledeyseniz de arayın, {ayarlar.sehir}'in her yerine gidiyorum.</p>
+        <p>Tepebaşı ve Odunpazarı başta olmak üzere, ihtiyaçlarınıza uygun bölgelerde hizmet veriyorum.</p>
       </div>
       <div class="mahalleler">
         {anasayfa.mahalleler.map((m) => (
@@ -196,7 +196,7 @@ const portre = '/uploads/danisman-ertugrul-seffaf.png';
       <h2 style="max-width:16ch;margin:0 auto 14px">Evinizi satmayı mı düşünüyorsunuz? Konuşalım.</h2>
       <p class="soluk" style="margin-bottom:28px">Telefonla arayabilir, WhatsApp'tan yazabilir ya da ofise uğrayabilirsiniz.</p>
       <div class="butonlar" style="justify-content:center">
-        <a class="btn btn--koyu" href={telLink(ayarlar.telefon)}><Ikon ad="telefon" />{ayarlar.telefon}</a>
+        <a class="btn btn--koyu telefon-grup" href={telLink(ayarlar.telefon)}><span class="telefon-adi">Ertuğrul Aydın</span><span><Ikon ad="telefon" />{ayarlar.telefon}</span></a>
         <a class="btn btn--cizgi" href={waLink(ayarlar.whatsapp, 'Merhaba Ertuğrul Bey, web sitenizden ulaşıyorum.')} target="_blank" rel="noopener"><Ikon ad="whatsapp" />WhatsApp'tan yaz</a>
       </div>
     </div>

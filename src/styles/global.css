@@ -284,6 +284,10 @@ textarea { min-height: 110px; resize: vertical; }
 .footer-ust { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: end; gap: 40px; padding-bottom: 50px; border-bottom: 1px solid rgba(255, 255, 255, .12); }
 .footer-buyuk { font-size: clamp(2.2rem, 6vw, 4.5rem); font-weight: 250; letter-spacing: -0.04em; line-height: 1; color: #fff; text-decoration: none; }
 .footer-buyuk:hover { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 8px; }
+.telefon-grup { display:inline-flex; flex-direction:column; align-items:flex-start; gap:3px; line-height:1.2; }
+.telefon-grup > span:last-child { display:inline-flex; align-items:center; gap:8px; }
+.telefon-adi { display:block; font-size:.76rem; font-weight:700; letter-spacing:normal; line-height:1.2; }
+.hero-call .telefon-adi { font-size:.78rem; }
 .footer-nav { display: flex; gap: 6px; flex-wrap: wrap; }
 .footer-nav a { font-size: var(--t-xs); padding: 7px 14px; border-radius: 999px; border: 1px solid rgba(255, 255, 255, .18); }
 .footer-nav a:hover { background: #fff; color: var(--siyah); }

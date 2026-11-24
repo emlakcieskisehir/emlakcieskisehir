@@ -72,7 +72,7 @@ const sema = {
           {satirlar.map(([k, v]) => <tr><th>{k}</th><td>{v}</td></tr>)}
         </table>
         <a class="btn btn--wa btn--tam" href={waLink(ayarlar.whatsapp, waMesaj)} target="_blank" rel="noopener"><Ikon ad="whatsapp" />WhatsApp'tan bu ilanı sor</a>
-        <a class="btn btn--koyu btn--tam" href={telLink(ayarlar.telefon)}><Ikon ad="telefon" />{ayarlar.telefon}</a>
+        <a class="btn btn--koyu btn--tam telefon-grup" href={telLink(ayarlar.telefon)}><span class="telefon-adi">Ertuğrul Aydın</span><span><Ikon ad="telefon" />{ayarlar.telefon}</span></a>
         {d.sahibinden && <a class="btn btn--cizgi btn--tam" href={d.sahibinden} target="_blank" rel="noopener">Sahibinden'deki ilanı aç</a>}
         <button class="btn btn--cizgi btn--tam" id="paylas" data-url={url} data-baslik={baslikTemiz}><Ikon ad="paylas" />İlanı paylaş</button>
         <p class="kucuk-not">{ayarlar.ofis_adi}, yetki belgesi no: {ayarlar.yetki_belge_no}</p>
