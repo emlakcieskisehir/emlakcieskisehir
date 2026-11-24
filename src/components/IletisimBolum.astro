@@ -5,7 +5,7 @@ import { telLink, waLink } from '../lib/yardimci';
 interface Props { baslikSeviye?: 'h1' | 'h2'; }
 const { baslikSeviye = 'h2' } = Astro.props;
 const Baslik = baslikSeviye;
-const harita = ayarlar.konum_linki;
+const harita = `https://maps.google.com/maps?q=${encodeURIComponent('39.7653341,30.5310599')}&z=17&output=embed`;
 ---
 <div class="iletisim">
   <div>
@@ -18,7 +18,7 @@ const harita = ayarlar.konum_linki;
     <dl>
       <div><dt>Telefon</dt><dd><a href={telLink(ayarlar.telefon)}>{ayarlar.telefon}</a></dd></div>
       <div><dt>E-posta</dt><dd><a href={`mailto:${ayarlar.eposta}`}>{ayarlar.eposta}</a></dd></div>
-      <div><dt>Ofis adresi</dt><dd><a href={ayarlar.konum_linki} target="_blank" rel="noopener">Google Haritalar’da konumu görüntüleyin</a></dd></div>
+      <div><dt>Ofis adresi</dt><dd><a href={ayarlar.konum_linki} target="_blank" rel="noopener">REALTY WORLD LIFE GAYRİMENKUL, Eskişehir</a></dd></div>
       <div><dt>Hizmet bölgeleri</dt><dd>{ayarlar.hizmet_bolgeleri}, {ayarlar.sehir}</dd></div>
       <div><dt>Çalışma saatleri</dt><dd>{ayarlar.calisma_saatleri}</dd></div>
     </dl>

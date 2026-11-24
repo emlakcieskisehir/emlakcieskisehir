@@ -4,12 +4,13 @@
   "hizmetler": [
     {
       "baslik": "Ev satışı",
-      "metin": "Güncel piyasa verilerine dayalı fiyat analizi hazırlıyor; tanıtım, alıcı görüşmeleri ve satış sürecini başından sonuna kadar yönetiyorum.",
+      "metin": "Güncel piyasa verilerine dayalı fiyat analizi hazırlıyor; tanıtım, alıcı görüşmeleri ve satış sürecini başından sonuna kadar yönetiyorum. Gerekli görülen durumlarda lazer metreyle ölçüm alıyor ve gayrimenkulünüz için sanal tur çekimi yapıyorum.",
       "kimin_icin": "Satıcılar için",
       "etiketler": [
         "Fiyat analizi",
         "Fotoğraf",
-        "İlan"
+        "Lazer metre ölçümü",
+        "Sanal tur"
       ]
     },
     {
