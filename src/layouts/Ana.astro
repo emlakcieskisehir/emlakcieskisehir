@@ -77,7 +77,18 @@ const basHarf = ayarlar.danisman_adi.split(' ').map((k: string) => k.charAt(0)).
     <div class="wrap">
       <a href="/" class="logo" aria-label={`${ayarlar.ofis_adi}, ana sayfa`}>
         {ayarlar.logo ? <img src={ayarlar.logo} alt={ayarlar.ofis_adi} /> : (
-          <img class="logo-imza-img" src="/uploads/ertugrul-aydin-imza.png" alt="Ertuğrul Aydın imzası" width="710" height="81" />
+          <>
+            <span class="logo-amblem" aria-hidden="true">
+              <svg viewBox="0 0 52 52" focusable="false">
+                <circle cx="26" cy="26" r="25" />
+                <text x="6" y="34">E</text><text x="23" y="34">A</text>
+              </svg>
+            </span>
+            <span class="logo-yazi">
+              <img class="logo-imza-img" src="/uploads/ertugrul-aydin-imza.png" alt="Ertuğrul Aydın imzası" width="710" height="81" />
+              <span class="logo-unvan">Gayrimenkul Danışmanı</span>
+            </span>
+          </>
         )}
       </a>
       <nav class="nav" id="nav" aria-label="Ana menü">
