@@ -67,7 +67,7 @@ const basHarf = ayarlar.danisman_adi.split(' ').map((k: string) => k.charAt(0)).
   <meta property="og:image" content={ogGorsel} />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="theme-color" content="#111111" />
-  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="icon" href="/uploads/ertugrul-location-logo.png" type="image/png" sizes="any" />
   <link rel="sitemap" href="/sitemap-index.xml" />
   
   {semalar.map((s) => <script type="application/ld+json" set:html={JSON.stringify(s)} />)}
@@ -78,14 +78,7 @@ const basHarf = ayarlar.danisman_adi.split(' ').map((k: string) => k.charAt(0)).
       <a href="/" class="logo" aria-label={`${ayarlar.ofis_adi}, ana sayfa`}>
         {ayarlar.logo ? <img src={ayarlar.logo} alt={ayarlar.ofis_adi} /> : (
           <>
-            <span class="logo-amblem" aria-hidden="true">
-              <svg viewBox="0 0 52 52" focusable="false">
-                <rect x="1" y="1" width="50" height="50" rx="11" />
-                <path class="ev-cati" d="M8 23.5 26 9l18 14.5" />
-                <path class="ev-govde" d="M12 22v20h28V22" />
-                <text class="logo-ea" x="15" y="37">E</text><text class="logo-ea" x="27" y="37">A</text>
-              </svg>
-            </span>
+            <img class="logo-amblem" src="/uploads/ertugrul-location-logo.png" alt="" aria-hidden="true" width="303" height="298" />
             <span class="logo-yazi">
               <img class="logo-imza-img" src="/uploads/ertugrul-aydin-imza.png" alt="Ertuğrul Aydın imzası" width="710" height="81" />
               <span class="logo-unvan">Gayrimenkul Danışmanı</span>
